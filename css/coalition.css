@@ -84,6 +84,7 @@ body header .email-border .email input {
     font-family: 'Open Sans Web', sans-serif;
     font-size: 22px;
     font-weight: 600;
+    height: 50px;
     left: 20px;
     line-height: 50px;
     outline: none;
