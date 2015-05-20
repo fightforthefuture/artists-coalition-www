@@ -2,31 +2,31 @@
     font-family: 'Open Sans Web';
     font-style: normal;
     font-weight: 300;
-    src: local('Open Sans Light'), local('OpenSans-Light'), url(../fonts/opensans-light.woff) format('woff');
+    src: local('Open Sans Light Web'), local('OpenSans-Light Web'), url(../fonts/opensans-light.woff) format('woff');
 }
 @font-face {
     font-family: 'Open Sans Web';
     font-style: normal;
     font-weight: 400;
-    src: local('Open Sans Web'), local('OpenSans'), url(../fonts/opensans-regular.woff) format('woff');
+    src: local('Open Sans Web Web'), local('OpenSans Web'), url(../fonts/opensans-regular.woff) format('woff');
 }
 @font-face {
     font-family: 'Open Sans Web';
     font-style: normal;
     font-weight: 600;
-    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(../fonts/opensans-semibold.woff) format('woff');
+    src: local('Open Sans Semibold Web'), local('OpenSans-Semibold Web'), url(../fonts/opensans-semibold.woff) format('woff');
 }
 @font-face {
     font-family: 'Open Sans Web';
     font-style: normal;
     font-weight: 700;
-    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(../fonts/opensans-bold.woff) format('woff');
+    src: local('Open Sans Bold Web'), local('OpenSans-Bold Web'), url(../fonts/opensans-bold.woff) format('woff');
 }
 @font-face {
     font-family: 'Raleway Web';
     font-style: normal;
     font-weight: 600;
-    src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url(../fonts/raleway-semibold.woff) format('woff');
+    src: local('Raleway SemiBold Web'), local('Raleway-SemiBold Web'), url(../fonts/raleway-semibold.woff) format('woff');
 }
 * {
     -webkit-box-sizing: border-box;
@@ -43,6 +43,8 @@ body header {
     background-image: url('../images/the-creation-of-adam.jpg');
     background-position: 0 30%;
     background-size: cover;
+    border-bottom: solid 10px #f1f1f2;
+    margin: 0 0 85px;
     overflow: hidden;
     padding: 0 32px;
     text-align: center;
@@ -111,7 +113,7 @@ body header .disclaimer {
     color: #ffffff;
     font-size: 13px;
     font-weight: 300;
-    margin: 20px 0 44px;
+    margin: 20px 0 100px;
 }
 body header .disclaimer a.fftf {
     color: #ffffff;
@@ -144,4 +146,78 @@ body header .disclaimer a.privacy {
         top: auto;
         width: calc(100%);
     }
+}
+section.artists {
+    max-width: 1392px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+section.artists h3 {
+    color: #1a223d;
+    float: left;
+    font-family: 'Open Sans Web', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 38px;
+    margin: 0 24px 0 0;
+}
+section.artists button {
+    background-color: #1fbf63;
+    background-image: url(../images/plus.png);
+    background-position: 14px 13px;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font-family: 'Open Sans Web', sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 42px;
+    padding: 0 16px 0 38px;
+
+    -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+}
+section.artists button:hover {
+    opacity: 0.864;
+}
+section.artists .filter {
+    cursor: pointer;
+    float: right;
+}
+section.artists .filter .label {
+    color: #281d4e;
+    float: left;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 37px;
+    margin: 0 20px 0 0;
+}
+section.artists .filter .dropdown {
+    float: left;
+}
+section.artists .filter .dropdown .selected {
+    background-color: #868686;
+    border-radius: 18px 0 0 18px;
+    color: #ffffff;
+    float: left;
+    font-size: 17px;
+    font-weight: 700;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 10px 0 20px;
+    width: 60px;
+}
+section.artists .filter .dropdown .arrow {
+    background-color: #737373;
+    background-image: url(../images/downwards-arrow.png);
+    background-repeat: no-repeat;
+    background-position: 10px 18px;
+    border-radius: 0 18px 18px 0;
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    width: 35px;
 }
