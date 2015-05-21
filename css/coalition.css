@@ -33,6 +33,9 @@
        -moz-box-sizing: border-box;
             box-sizing: border-box;
 }
+a img {
+    border: none;
+}
 body {
     font-family: 'Open Sans Web', sans-serif;
     font-size: 32px;
@@ -276,5 +279,6 @@ body > footer .right .twitter {
 }
 body > footer .right .facebook img,
 body > footer .right .twitter img {
+    cursor: pointer;
     display: block;
 }
