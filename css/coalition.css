@@ -38,7 +38,7 @@ body {
     font-size: 32px;
     margin: 0;
 }
-body header {
+body > header {
     background-color: #302f34;
     background-image: url('../images/the-creation-of-adam.jpg');
     background-position: 0 30%;
@@ -49,13 +49,13 @@ body header {
     padding: 0 32px;
     text-align: center;
 }
-body header h1 {
+body > header h1 {
     color: #f9f7ef;
     font-family: 'Raleway Web';
     font-family: 62px;
     margin: 90px 0 16px;
 }
-body header h3 {
+body > header h3 {
     color: #f9f7ef;
     font-family: 'Open Sans Web', sans-serif;
     font-size: 26px;
@@ -63,20 +63,20 @@ body header h3 {
     margin: 0 auto 26px;
     max-width: 900px;
 }
-body header .email-border {
+body > header .email-border {
     background-color: rgba(0, 0, 0, 0.27);
     padding: 21px;
     border-radius: 45px;
     width: 586px;
     margin: 0 auto;
 }
-body header .email-border .email {
+body > header .email-border .email {
     background-color: #fff;
     border-radius: 25px;
     height: 50px;
     position: relative;
 }
-body header .email-border .email input {
+body > header .email-border .email input {
     background-color: transparent;
     border: none;
     color: #27262a;
@@ -91,13 +91,15 @@ body header .email-border .email input {
     position: absolute;
     width: calc(100% - 200px);
 }
-body header .email-border .email button {
+body > header .email-border .email button {
     background-color: #62c7dc;
     border-radius: 26px;
     border: none;
     color: #ffffff;
     cursor: pointer;
+    font-family: 'Open Sans Web', sans-serif;
     font-size: 18px;
+    font-weight: 600;
     line-height: 40px;
     position: absolute;
     right: 5px;
@@ -107,39 +109,39 @@ body header .email-border .email button {
     -webkit-transition: opacity 0.3s;
             transition: opacity 0.3s;
 }
-body header .email-border .email button:hover {
-    opacity: 0.864;
+body > header .email-border .email button:hover {
+    opacity: 0.838;
 }
-body header .disclaimer {
+body > header .disclaimer {
     color: #ffffff;
     font-size: 13px;
     font-weight: 300;
     margin: 20px 0 100px;
 }
-body header .disclaimer a.fftf {
+body > header .disclaimer a.fftf {
     color: #ffffff;
     font-weight: 700;
 }
-body header .disclaimer a.privacy {
+body > header .disclaimer a.privacy {
     color: #ffffff;
     font-weight: 600;
 }
 /* Responsive styles for header */
 @media screen and (max-width: 650px) {
-    body header .email-border {
+    body > header .email-border {
         border-radius: 4px;
         width: 100%;
     }
-    body header .email-border .email {
+    body > header .email-border .email {
         border-radius: 4px;
         height: 100px;
     }
-    body header .email-border .email input {
+    body > header .email-border .email input {
         border-radius: 4px;
         font-size: 16px;
         width: calc(100% - 40px);
     }
-    body header .email-border .email button {
+    body > header .email-border .email button {
         border-radius: 0 0 4px 4px;
         bottom: 0;
         left: 0;
@@ -148,12 +150,15 @@ body header .disclaimer a.privacy {
         width: calc(100%);
     }
 }
-section.artists {
+body > section.artists {
     max-width: 1392px;
     margin: 0 auto;
     padding: 0 16px;
 }
-section.artists h3 {
+body > section.artists header {
+    overflow: hidden;
+}
+body > section.artists header h3 {
     color: #1a223d;
     float: left;
     font-family: 'Open Sans Web', sans-serif;
@@ -162,7 +167,7 @@ section.artists h3 {
     line-height: 38px;
     margin: 0 24px 16px 0;
 }
-section.artists button {
+body > section.artists header button {
     background-color: #1fbf63;
     background-image: url(../images/plus.png);
     background-position: 14px 13px;
@@ -182,14 +187,14 @@ section.artists button {
     -webkit-transition: opacity 0.3s;
             transition: opacity 0.3s;
 }
-section.artists button:hover {
-    opacity: 0.864;
+body > section.artists header button:hover {
+    opacity: 0.838;
 }
-section.artists .filter {
+body > section.artists header .filter {
     cursor: pointer;
     float: right;
 }
-section.artists .filter .label {
+body > section.artists header .filter .label {
     color: #281d4e;
     float: left;
     font-size: 25px;
@@ -197,10 +202,10 @@ section.artists .filter .label {
     line-height: 37px;
     margin: 0 20px 0 0;
 }
-section.artists .filter .dropdown {
+body > section.artists header .filter .dropdown {
     float: left;
 }
-section.artists .filter .dropdown .selected {
+body > section.artists header .filter .dropdown .selected {
     background-color: #868686;
     border-radius: 18px 0 0 18px;
     color: #ffffff;
@@ -212,7 +217,7 @@ section.artists .filter .dropdown .selected {
     padding: 0 10px 0 20px;
     width: 60px;
 }
-section.artists .filter .dropdown .arrow {
+body > section.artists header .filter .dropdown .arrow {
     background-color: #737373;
     background-image: url(../images/downwards-arrow.png);
     background-repeat: no-repeat;
@@ -222,4 +227,54 @@ section.artists .filter .dropdown .arrow {
     height: 42px;
     line-height: 42px;
     width: 35px;
+}
+body > footer {
+    background-color: #19191b;
+    padding: 0 40px;
+    overflow: hidden;
+}
+body > footer .left {
+    float: left;
+}
+body > footer .left .logo {
+    margin: 38px 32px 0 0;
+}
+body > footer .right {
+    float: right;
+    margin: 37px 0;
+}
+body > footer .right .donate {
+    background-color: #505063;
+    border-radius: 15px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: 'Open Sans Web', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    height: 32px;
+    line-height: 30px;
+    right: 5px;
+    top: 4px;
+    width: 112px;
+
+    -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+}
+body > footer .right .donate:hover {
+    opacity: 0.838;
+}
+body > footer .right .facebook {
+    float: left;
+    margin: 1px 0 0 20px;
+}
+body > footer .right .twitter {
+    float: left;
+    margin: 1px 0 0 14px;
+}
+body > footer .right .facebook img,
+body > footer .right .twitter img {
+    display: block;
 }
