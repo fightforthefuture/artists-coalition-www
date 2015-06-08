@@ -21,11 +21,14 @@ textarea {
 <script type="text/javascript">
 var textarea = document.querySelector('textarea');
 
-textarea.addEventListener('focus', function(e) {
+function onFocus() {
     if (textarea.value.length === 0) {
         textarea.value = 'ArtistName ';
     }
-}, false);
+}
+
+textarea.addEventListener('focus', onFocus, false);
+textarea.addEventListener('keyup', onFocus, false);
 
 textarea.addEventListener('blur', function(e) {
     if (textarea.value === 'ArtistName ') {
