@@ -261,6 +261,8 @@ body > footer .right .donate {
     height: 32px;
     line-height: 30px;
     right: 5px;
+    text-align: center;
+    text-decoration: none;
     top: 4px;
     width: 112px;
 
