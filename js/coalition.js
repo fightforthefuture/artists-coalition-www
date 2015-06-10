@@ -109,7 +109,7 @@ function setupHeroForm() {
 
         data.append('member[email]', email);
 
-        // ajax.post('https://queue.fightforthefuture.org/action', data);
+        ajax.post('https://queue.fightforthefuture.org/action', data);
 
         document.querySelector('header .email').className += ' thanks ';
     });
