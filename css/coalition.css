@@ -115,6 +115,39 @@ body > header .email-border .email button {
 body > header .email-border .email button:hover {
     opacity: 0.838;
 }
+body > header .email-border .email .thanks-message {
+    display: none;
+
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+}
+body > header .email-border .email.thanks {
+    background-color: #62c7dc;
+}
+body > header .email-border .email.thanks button,
+body > header .email-border .email.thanks input {
+    display: none;
+}
+@keyframes thanksMessageSlide {
+    from {
+        transform: translate(0, 16px) scale(0.27);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+}
+body > header .email-border .email.thanks .thanks-message {
+    animation-duration: 0.3s;
+    animation-name: thanksMessageSlide;
+    animation-direction: forward;
+    display: block;
+}
 body > header .disclaimer {
     color: #ffffff;
     font-size: 13px;
@@ -138,6 +171,9 @@ body > header .disclaimer a.privacy {
     body > header .email-border .email {
         border-radius: 4px;
         height: 100px;
+    }
+    body > header .email-border .email .thanks-message {
+        line-height: 100px;
     }
     body > header .email-border .email input {
         border-radius: 4px;
