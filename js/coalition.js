@@ -89,6 +89,7 @@ function loadCategories() {
 }
 
 function setupHeroForm() {
+    var emailRegex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
     document.getElementById('hero-form').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -102,8 +103,8 @@ function setupHeroForm() {
 
         var emailElement = document.getElementById('hero-form-email');
         var email = emailElement.value;
-        if (!email) {
-            alert('Please enter your email.');
+        if (!email || !emailRegex.test(email)) {
+            alert('Please enter an email address.');
             return emailElement.focus();
         }
 
@@ -111,6 +112,7 @@ function setupHeroForm() {
 
         ajax.post('https://queue.fightforthefuture.org/action', data);
 
+        document.activeElement.blur();
         document.querySelector('header .email').className += ' thanks ';
     });
 }

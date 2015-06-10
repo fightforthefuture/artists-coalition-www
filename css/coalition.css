@@ -78,6 +78,9 @@ body > header .email-border .email {
     border-radius: 25px;
     height: 50px;
     position: relative;
+
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
 }
 body > header .email-border .email input {
     background-color: transparent;
@@ -121,31 +124,37 @@ body > header .email-border .email .thanks-message {
     color: #fff;
     font-size: 24px;
     font-weight: bold;
+    height: 100%;
     line-height: 50px;
+    opacity: 0;
+    position: absolute;
     text-align: center;
+    width: 100%;
 }
 body > header .email-border .email.thanks {
     background-color: #62c7dc;
 }
 body > header .email-border .email.thanks button,
 body > header .email-border .email.thanks input {
-    display: none;
-}
-@keyframes thanksMessageSlide {
-    from {
-        transform: translate(0, 16px) scale(0.27);
-        opacity: 0;
-    }
+    animation: thanksFormElementsSlide 0.3s forwards;
+    -webkit-animation: thanksFormElementsSlide 0.3s forwards;
 
-    to {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
+    opacity: 0;
+
+    -webkit-transition: scale(0);
+            transition: scale(0);
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
 }
 body > header .email-border .email.thanks .thanks-message {
-    animation-duration: 0.3s;
-    animation-name: thanksMessageSlide;
-    animation-direction: forward;
+    animation: thanksMessageSlide 0.3s 0.3s forwards;
+    -webkit-animation: thanksMessageSlide 0.3s 0.3s forwards;
+    
     display: block;
 }
 body > header .disclaimer {
@@ -320,4 +329,50 @@ body > footer .right .facebook img,
 body > footer .right .twitter img {
     cursor: pointer;
     display: block;
+}
+
+/* Animations */
+@keyframes thanksMessageSlide {
+    from {
+        transform: scale(0.27);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes thanksMessageSlide {
+    from {
+        -webkit-transform: scale(0.27);
+        opacity: 0;
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes thanksFormElementsSlide {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+@-webkit-keyframes thanksFormElementsSlide {
+    from {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+
+    to {
+        -webkit-transform: scale(0);
+        opacity: 0;
+    }
 }
