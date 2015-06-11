@@ -116,7 +116,7 @@ body > header .email-border .email button {
             transition: background-color 0.3s;
 }
 body > header .email-border .email button:hover {
-    background-color: #14afff;
+    background-color: #11b9ff;
 }
 body > header .email-border .email .thanks-message {
     display: none;
