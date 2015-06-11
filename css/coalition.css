@@ -241,7 +241,7 @@ body > section.artists header button:hover {
 body > section.artists header .filter {
     cursor: pointer;
     float: right;
-    margin: 0 0 32px;
+    margin: 0 0 32px 24px;
 }
 body > section.artists header .filter .label {
     color: #281d4e;
