@@ -138,10 +138,11 @@ function setupHeroForm() {
 }
 
 function respondToResizes() {
+    var artistsContainer = document.getElementById('artists-section');
     var artistsView = document.getElementById('artists-view');
     addEventListener('resize', _.throttle(function(e) {
         var padding = 32;
-        var potentialWidth = document.body.offsetWidth - padding;
+        var potentialWidth = artistsContainer.clientWidth - padding;
         var gutterSize = 10;
         var elementWidth = 217;
 
@@ -159,5 +160,7 @@ function respondToResizes() {
         if (packery) {
             packery.layout();
         }
-    }, 300), false);
+    }, 16), false);
+
+    window.dispatchEvent(new Event('resize'));
 }
