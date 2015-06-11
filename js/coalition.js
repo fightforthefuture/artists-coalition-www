@@ -68,6 +68,7 @@ var state = {
 
 
 
+var artistTemplate = _.template(document.getElementById('template:artist').innerHTML);
 function loadArtistsFromDB(params) {
     var url =
         'https://coalition-api.herokuapp.com/artists/' +
@@ -76,8 +77,14 @@ function loadArtistsFromDB(params) {
         (params.category || '');
 
     ajax.get(url, function(res) {
-        console.log('Get artists from DB');
-        console.log(JSON.parse(res));
+        var artistsData = JSON.parse(res);
+
+        var buffer = '';
+        _.each(artistsData, function(artistData) {
+            buffer += artistTemplate(artistData);
+        });
+
+        document.getElementById('artists-view').innerHTML = buffer;
     });
 }
 
@@ -113,6 +120,6 @@ function setupHeroForm() {
         ajax.post('https://queue.fightforthefuture.org/action', data);
 
         document.activeElement.blur();
-        document.querySelector('header .email').className += ' thanks ';
+        document.querySelector('header .email').classList.add('thanks');
     });
 }

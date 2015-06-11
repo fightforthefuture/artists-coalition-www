@@ -201,7 +201,7 @@ body > header .disclaimer a.privacy {
 body > section.artists {
     max-width: 1392px;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 16px 32px;
 }
 body > section.artists header {
     overflow: hidden;
@@ -276,6 +276,9 @@ body > section.artists header .filter .dropdown .arrow {
     height: 42px;
     line-height: 42px;
     width: 35px;
+}
+body > section.artists .loading {
+    opacity: 0.3;
 }
 body > footer {
     background-color: #19191b;

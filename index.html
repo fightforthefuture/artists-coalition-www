@@ -47,6 +47,12 @@
             </div>
         </div>
     </header>
+
+    <div id="artists-view">
+        <div class="loading">
+            Loading...
+        </div>
+    </div>
 </section>
 
 <footer>
@@ -67,7 +73,12 @@
     </div>
 </footer>
 
-<script src="js/coalition.js"></script>
+<script type="template" id="template:artist">
+<h2><%= name %></h2>
+</script>
+
+<script src="js/vendor/lodash.min.js"></script>
+<script src="js/coalition.js" async></script>
 
 </body>
 </html>
