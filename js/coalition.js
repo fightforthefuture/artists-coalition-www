@@ -81,10 +81,17 @@ function loadArtistsFromDB(params) {
 
         var buffer = '';
         _.each(artistsData, function(artistData) {
+            console.log(artistData);
             buffer += artistTemplate(artistData);
         });
 
-        document.getElementById('artists-view').innerHTML = buffer;
+        var view = document.getElementById('artists-view');
+        view.innerHTML = buffer;
+
+        var packery = new Packery(view, {
+            itemSelector: '.artist',
+            gutter: 10
+        });
     });
 }
 
@@ -96,7 +103,7 @@ function loadCategories() {
 }
 
 function setupHeroForm() {
-    var emailRegex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+    var emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     document.getElementById('hero-form').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -109,11 +116,13 @@ function setupHeroForm() {
         data.append('org', 'fftf');
 
         var emailElement = document.getElementById('hero-form-email');
-        var email = emailElement.value;
+        var email = emailElement.value.trim();
         if (!email || !emailRegex.test(email)) {
             alert('Please enter an email address.');
             return emailElement.focus();
         }
+
+        state.savedEmail = email;
 
         data.append('member[email]', email);
 

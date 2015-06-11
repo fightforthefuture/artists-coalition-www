@@ -74,10 +74,14 @@
 </footer>
 
 <script type="template" id="template:artist">
-<h2><%= name %></h2>
+<div class="artist" style="background-image: url(<%= photo_url || 'images/the-creation-of-adam.jpg' %>)">
+<a class="name" href="<%= url || '#' %>" target="_blank"><%= name %></a>
+<span class="biography"><%= biography %></span>
+</div>
 </script>
 
 <script src="js/vendor/lodash.min.js"></script>
+<script src="js/vendor/packery.min.js"></script>
 <script src="js/coalition.js" async></script>
 
 </body>
