@@ -301,7 +301,47 @@ body > section.join-us > h4 strong {
     font-weight: 600;
 }
 body > section.join-us > button.add-your-name {
+    margin: 0 auto 80px;
+}
+body > section.join-us > .testimonials {
+    margin: 0 auto 46px;
+    max-width: 1132px;
+    text-align: center;
+}
+body > section.join-us > .testimonials .testimonial {
+    display: inline-block;
+    height: 340px;
+    margin: 0 8px 24px;
+    position: relative;
+    width: 260px;
+}
+body > section.join-us > .testimonials .testimonial .quote {
+    color: #fff;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 40px 32px;
+}
+body > section.join-us > .testimonials .testimonial .name {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.6;
+    text-transform: uppercase;
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+}
+body > section.join-us > .testimonials .testimonial.snowden {
+    background-image: url(../images/testimonials/snowden.png);
+}
+body > section.join-us > .statement {
+    background-color: #454551;
+    color: #fff;
+    font-size: 24px;
     margin: 0 auto;
+    max-width: 1112px;
+    padding: 40px 45px;
+    text-align: center;
 }
 body > footer {
     background-color: #19191b;
@@ -379,6 +419,11 @@ button.add-your-name {
 }
 button.add-your-name:hover {
     background-color: #0be066;
+}
+
+/* IE */
+:-ms-input-placeholder {  
+   opacity: 0.5;
 }
 
 /* Animations */

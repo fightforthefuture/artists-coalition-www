@@ -140,7 +140,8 @@ function setupHeroForm() {
 function respondToResizes() {
     var artistsContainer = document.getElementById('artists-section');
     var artistsView = document.getElementById('artists-view');
-    addEventListener('resize', _.throttle(function(e) {
+
+    var onResize = _.throttle(function(e) {
         var padding = 32;
         var potentialWidth = artistsContainer.clientWidth - padding;
         var gutterSize = 10;
@@ -160,7 +161,8 @@ function respondToResizes() {
         if (packery) {
             packery.layout();
         }
-    }, 16), false);
+    }, 16);
 
-    window.dispatchEvent(new Event('resize'));
+    addEventListener('resize', onResize, false);
+    onResize();
 }
