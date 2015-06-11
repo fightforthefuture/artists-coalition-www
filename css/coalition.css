@@ -278,6 +278,7 @@ body > section.artists header .filter .dropdown .arrow {
     width: 35px;
 }
 body > section.artists #artists-view {
+    margin: 0 auto;
 }
 body > section.artists #artists-view .loading {
     opacity: 0.3;

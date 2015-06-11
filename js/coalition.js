@@ -46,10 +46,11 @@ var ajax = {
 
 
 
-// Application state.
+// Application globals.
 var state = {
     savedEmail: '',
 };
+var packery;
 
 
 
@@ -64,6 +65,8 @@ var state = {
         page: 1,
         size: 10,
     });
+
+    respondToResizes();
 })();
 
 
@@ -88,10 +91,11 @@ function loadArtistsFromDB(params) {
         var view = document.getElementById('artists-view');
         view.innerHTML = buffer;
 
-        var packery = new Packery(view, {
+        packery = new Packery(view, {
             itemSelector: '.artist',
             gutter: 10
         });
+        packery.unbindResize();
     });
 }
 
@@ -131,4 +135,29 @@ function setupHeroForm() {
         document.activeElement.blur();
         document.querySelector('header .email').classList.add('thanks');
     });
+}
+
+function respondToResizes() {
+    var artistsView = document.getElementById('artists-view');
+    addEventListener('resize', _.throttle(function(e) {
+        var padding = 32;
+        var potentialWidth = document.body.offsetWidth - padding;
+        var gutterSize = 10;
+        var elementWidth = 217;
+
+        var estimatedNumberOfElements = Math.floor(potentialWidth / elementWidth);
+        var remainingWidth = potentialWidth % elementWidth;
+
+        if (remainingWidth < (estimatedNumberOfElements - 1) * gutterSize) {
+            estimatedNumberOfElements--;
+        }
+
+        var newWidth = estimatedNumberOfElements * elementWidth + gutterSize * (estimatedNumberOfElements - 1);
+
+        artistsView.style.width = newWidth + 'px';
+
+        if (packery) {
+            packery.layout();
+        }
+    }, 300), false);
 }
