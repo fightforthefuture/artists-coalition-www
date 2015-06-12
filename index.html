@@ -42,17 +42,13 @@
         <div class="filter">
             <div class="label">Show me:</div>
             <div class="dropdown" id="categories-modal-button">
-                <div class="selected">ALL</div>
+                <div class="selected" id="selected-category-name">ALL</div>
                 <div class="arrow"></div>
             </div>
         </div>
     </header>
 
-    <div id="artists-view">
-        <div class="loading">
-            Loading...
-        </div>
-    </div>
+    <div id="artists-view"></div>
 </section>
 
 <section class="join-us">
@@ -123,8 +119,13 @@
     </div>
 </footer>
 
-<div class="modal" id="modal:categories">
-    <div id="categories-modal-options">
+<div class="overlay categories-modal invisible" id="categories-modal">
+    <div class="gutter">
+        <div class="modal">
+            <a class="close" href="#">×</a>
+            <h1>Categories</h1>
+            <div id="categories-modal-options" class="options"></div>
+        </div>
     </div>
 </div>
 

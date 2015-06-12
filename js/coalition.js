@@ -48,7 +48,8 @@ var ajax = {
 
 // Application globals.
 var state = {
-    savedEmail: '',
+    email: '',
+    category: null,
 };
 var packery;
 
@@ -58,12 +59,13 @@ var packery;
 (function() {
     setupHeroForm();
 
+    prepareOverlays();
     setupCategoriesModal();
 
     loadArtistsFromDB({
-        category: null,
+        category: state.category,
         page: 1,
-        size: 10,
+        size: 16,
     });
 
     respondToResizes();
@@ -73,6 +75,16 @@ var packery;
 
 var artistTemplate = _.template(document.getElementById('template:artist').innerHTML);
 function loadArtistsFromDB(params) {
+    var view = document.getElementById('artists-view');
+
+    if (!packery) {
+        packery = new Packery(view, {
+            itemSelector: '.artist',
+            gutter: 10
+        });
+        packery.unbindResize();
+    }
+
     var url =
         'https://coalition-api.herokuapp.com/artists/' +
         params.size + '/' +
@@ -82,20 +94,23 @@ function loadArtistsFromDB(params) {
     ajax.get(url, function(res) {
         var artistsData = JSON.parse(res);
 
-        var buffer = '';
+        var element;
+        var elements = [];
+        var container = document.createElement('div');
+        var fragment = document.createDocumentFragment();
         _.each(artistsData, function(artistData) {
-            console.log(artistData);
-            buffer += artistTemplate(artistData);
+            container.innerHTML = artistTemplate(artistData);
+            element = container.firstElementChild
+            elements.push(element);
+            fragment.appendChild(element);
         });
 
-        var view = document.getElementById('artists-view');
-        view.innerHTML = buffer;
+        packery.remove(packery.getItemElements());
 
-        packery = new Packery(view, {
-            itemSelector: '.artist',
-            gutter: 10
-        });
-        packery.unbindResize();
+        view.appendChild(fragment);
+        packery.appended(elements);
+
+        packery.layout(); // Packery bug fix.
     });
 }
 
@@ -119,7 +134,7 @@ function setupHeroForm() {
             return emailElement.focus();
         }
 
-        state.savedEmail = email;
+        state.email = email;
 
         data.append('member[email]', email);
 
@@ -135,11 +150,39 @@ function setupCategoriesModal() {
     var categoriesButton = document.getElementById('categories-modal-button');
 
     categoriesButton.addEventListener('click', function(e) {
-        console.log('TODO: Show categories modal');
+        modalShow('categories-modal');
     }, false);
 
+    categoriesOptions.addEventListener('click', function(e) {
+        if (!e.target.classList.contains('option')) return;
+        
+        var id = e.target.getAttribute('data-id');
+        var name = e.target.textContent.trim();
+
+        if (id === '0') {
+            id = false;
+        }
+
+        state.category = id;
+        document.getElementById('selected-category-name').textContent = name;
+
+        modalHide('categories-modal');
+
+        loadArtistsFromDB({
+            category: state.category,
+            page: 1,
+            size: 16,
+        });
+    }, false);
+
+    // Populate categories.
     ajax.get('https://coalition-api.herokuapp.com/categories', function(res) {
         var categories = JSON.parse(res);
+        categories.unshift({
+            id: 0,
+            name: "All",
+        });
+
         var template = _.template(document.getElementById('template:categories').innerHTML);
         var html = template({ categories: categories });
         categoriesOptions.innerHTML = html;
@@ -170,8 +213,52 @@ function respondToResizes() {
         if (packery) {
             packery.layout();
         }
+
+        var modals = document.getElementsByClassName('modal');
+        for (var i = 0; i < modals.length; i++) {
+            modals[i].style.maxHeight = innerHeight + 'px';
+        }
     }, 16);
 
     addEventListener('resize', onResize, false);
     onResize();
+}
+
+function modalShow(id) {
+    var overlayNode = document.getElementById(id);
+    overlayNode.style.display = 'table';
+    setTimeout(function() {
+        overlayNode.className = overlayNode.className.replace(/ ?invisible ?/, ' ');
+    }, 50);
+}
+
+function modalHide(id) {
+    var overlayNode = document.getElementById(id);
+    overlayNode.className += 'invisible';
+    setTimeout(function() {
+        overlayNode.style.display = 'none';
+    }, 400);
+}
+
+function prepareOverlays() {
+    var modals = document.querySelectorAll('.overlay');
+    for (var i = 0; i < modals.length; i++) {
+        bindModalEvents(modals[i]);
+    }
+}
+
+function bindModalEvents(modal) {
+    if (!modal)
+        return;
+    modal.querySelector('.gutter').addEventListener('click', function(e) {
+        if (e.target === e.currentTarget) {
+            e.preventDefault();
+            modalHide(modal.id);
+        }
+    }.bind(this), false);
+
+    modal.querySelector('.modal .close').addEventListener('click', function(e) {
+        e.preventDefault();
+        modalHide(modal.id);
+    }.bind(this), false);
 }

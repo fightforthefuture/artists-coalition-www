@@ -28,6 +28,10 @@
     font-weight: 600;
     src: local('Raleway SemiBold Web'), local('Raleway-SemiBold Web'), url(../fonts/raleway-semibold.woff) format('woff');
 }
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
 * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -204,6 +208,7 @@ body > header .disclaimer a.privacy {
 body > section.artists {
     max-width: 1392px;
     margin: 0 auto;
+    min-height: 545px;
     padding: 0 16px 111px;
 }
 body > section.artists header {
@@ -248,7 +253,10 @@ body > section.artists header .filter .dropdown .selected {
     height: 42px;
     line-height: 42px;
     padding: 0 10px 0 20px;
-    width: 60px;
+    text-transform: uppercase;
+    
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
 }
 body > section.artists header .filter .dropdown .arrow {
     background-color: #737373;
@@ -260,6 +268,15 @@ body > section.artists header .filter .dropdown .arrow {
     height: 42px;
     line-height: 42px;
     width: 35px;
+
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+}
+body > section.artists header .filter .dropdown:hover .selected {
+    background-color: #878789;
+}
+body > section.artists header .filter .dropdown:hover .arrow {
+    background-color: #646466;
 }
 body > section.artists #artists-view {
     margin: 0 auto;
@@ -274,7 +291,7 @@ body > section.artists #artists-view .artist {
     height: 280px;
     padding: 18px 18px 18px 28px;
     width: 217px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, .8);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .982);
 }
 body > section.artists #artists-view .artist .name {
     color: #00ff66;
@@ -425,8 +442,188 @@ button.add-your-name:hover {
 }
 
 /* Modals */
-.modal {
+.overlay {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    display: table;
     display: none;
+    z-index: 9001;
+
+    -webkit-transition: opacity 0.4s ease-out 0s, left 0s linear 0s;
+            transition: opacity 0.4s ease-out 0s, left 0s linear 0s;
+}
+.overlay.invisible {
+    pointer-events: none;
+    opacity: 0;
+    left: 99999px;
+
+    -webkit-transition: opacity 0.4s ease-out 0s, left 0s linear 0.5s;
+            transition: opacity 0.4s ease-out 0s, left 0s linear 0.5s;
+}
+.overlay .gutter {
+    display: table-cell;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.overlay .gutter .modal {
+    background: white;
+    border-radius: 10px;
+    color: black;
+    cursor: default;
+    margin: 0px auto;
+    max-width: 550px;
+    overflow: auto;
+    padding-bottom: 10px;
+    position: relative;
+    text-align: center;
+    overflow-x: hidden;
+
+    -webkit-transform: scale(1);
+            transform: scale(1);
+
+    -webkit-transition: -webkit-transform 0.4s ease-out 0s;
+            transition: transform 0.4s ease-out 0s;
+}
+.overlay.invisible .gutter .modal {
+    -webkit-transform: scale(0.784);
+            transform: scale(0.784);
+
+    -webkit-transition: -webkit-transform 0.4s ease-out 0s;
+            transition: transform 0.4s ease-out 0s;
+}
+.overlay .modal a.close {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    color: black;
+    opacity: .4;
+    text-decoration: none;
+    font-size: 30px;
+}
+.overlay .modal a.close:hover {
+    opacity: .6;
+}
+.overlay .modal h1 {
+    background-color: #868686;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    font-family: "Open Sans";
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 31px;
+    margin-bottom: 4px;
+    padding: 16px;
+    text-align: center;
+}
+.overlay .modal h2 {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 0px 25px;
+    margin: 0px auto;
+}
+.overlay .modal p {
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #333;
+    margin-bottom: 0px;
+    font-size: 18px;
+    line-height: 23px;
+}
+.overlay .modal label {
+    font-size: 13px;
+    display: inline-block;
+    width: 130px;
+    text-align: left;
+}
+.overlay .modal label span {
+    color: gray;
+}
+.overlay .modal input {
+    width: 280px;
+    font-size: 20px;
+}
+.overlay .modal select {
+    width: 280px;
+    font-size: 20px;
+}
+.overlay .modal hr {
+    border: 0px;
+}
+.overlay .modal button {
+    display: inline-block;
+    margin: 15px auto 20px auto;
+    outline: medium none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+
+    padding: 0.5em 2em 0.55em;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 0.5em;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid #12A1D6;
+
+    background: #32c0f2; /* Old browsers */
+    background: -moz-linear-gradient(top, #32c0f2 0%, #028bbb 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#32c0f2), color-stop(100%,#028bbb)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #32c0f2 0%,#028bbb 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #32c0f2 0%,#028bbb 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #32c0f2 0%,#028bbb 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #32c0f2 0%,#028bbb 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#32c0f2', endColorstr='#028bbb',GradientType=0 ); /* IE6-9 */
+
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+
+    color: white;
+}
+
+.categories-modal .gutter .modal,
+.categories-modal .gutter .modal h1 {
+    background-color: #62c7dc;
+}
+
+.categories-modal .gutter .modal .options {
+    padding: 0 0 16px;
+    text-align: left;
+}
+
+.categories-modal .gutter .modal .options .option {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.117);
+    box-shadow: 0px -8px 8px rgba(0, 0, 0, 0.04) inset;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 8px 32px;
+    text-transform: uppercase;
+
+    -webkit-transition: all 0.129s;
+            transition: all 0.129s;
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+.categories-modal .gutter .modal .options .option:hover {
+    background-color: #62c7dc;
+    color: #fff;
+    text-indent: 8px;
+}
+
+.categories-modal .gutter .modal .options .option:first-of-type {
+    border-top: 1px solid rgba(0, 0, 0, 0.117);
 }
 
 /* IE */
