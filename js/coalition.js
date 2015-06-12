@@ -111,6 +111,12 @@ function loadArtistsFromDB(params) {
         packery.appended(elements);
 
         packery.layout(); // Packery bug fix.
+
+        if (elements.length === 0) {
+            view.classList.add('nothing');
+        } else {
+            view.classList.remove('nothing');
+        }
     });
 }
 

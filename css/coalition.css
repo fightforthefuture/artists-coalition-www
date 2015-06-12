@@ -281,8 +281,15 @@ body > section.artists header .filter .dropdown:hover .arrow {
 body > section.artists #artists-view {
     margin: 0 auto;
 }
-body > section.artists #artists-view .loading {
+body > section.artists #artists-view .nothing {
+    display: none;
+    font-size: 26px;
     opacity: 0.3;
+    padding: 32px 0 0;
+    text-align: center;
+}
+body > section.artists #artists-view.nothing .nothing {
+    display: block;
 }
 body > section.artists #artists-view .artist {
     border-radius: 5px;
