@@ -282,14 +282,24 @@ body > section.artists #artists-view {
     margin: 0 auto;
 }
 body > section.artists #artists-view .nothing {
-    display: none;
     font-size: 26px;
-    opacity: 0.3;
+    opacity: 0;
     padding: 32px 0 0;
     text-align: center;
+
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0);
+
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
 }
 body > section.artists #artists-view.nothing .nothing {
-    display: block;
+    opacity: 0.3;
+
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
 }
 body > section.artists #artists-view .artist {
     border-radius: 5px;
@@ -681,5 +691,27 @@ button.add-your-name:hover {
     to {
         -webkit-transform: scale(0);
         opacity: 0;
+    }
+}
+@keyframes nothingSlide {
+    from {
+        transform: scale(0.27);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes nothingSlide {
+    from {
+        -webkit-transform: scale(0.27);
+        opacity: 0;
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        opacity: 1;
     }
 }
