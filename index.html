@@ -41,7 +41,7 @@
         <button class="add-your-name">Add your name</button>
         <div class="filter">
             <div class="label">Show me:</div>
-            <div class="dropdown">
+            <div class="dropdown" id="categories-modal-button">
                 <div class="selected">ALL</div>
                 <div class="arrow"></div>
             </div>
@@ -123,11 +123,24 @@
     </div>
 </footer>
 
+<div class="modal" id="modal:categories">
+    <div id="categories-modal-options">
+    </div>
+</div>
+
 <script type="template" id="template:artist">
 <div class="artist" style="background-image: url(<%= photo_url || 'images/the-creation-of-adam.jpg' %>)">
 <a class="name" href="<%= url || '#' %>" target="_blank"><%= name %></a>
 <span class="biography"><%= biography %></span>
 </div>
+</script>
+
+<script type="template" id="template:categories">
+<% _.each(categories, function(c) { %>
+    <div class="option" data-id="<%= c.id %>">
+        <%= c.name %>
+    </div>
+<% }) %>
 </script>
 
 <script src="js/vendor/lodash.min.js"></script>

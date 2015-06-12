@@ -58,7 +58,7 @@ var packery;
 (function() {
     setupHeroForm();
 
-    loadCategories();
+    setupCategoriesModal();
 
     loadArtistsFromDB({
         category: null,
@@ -99,13 +99,6 @@ function loadArtistsFromDB(params) {
     });
 }
 
-function loadCategories() {
-    ajax.get('https://coalition-api.herokuapp.com/categories', function(res) {
-        console.log('Get categories');
-        console.log(JSON.parse(res));
-    });
-}
-
 function setupHeroForm() {
     var emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     document.getElementById('hero-form').addEventListener('submit', function(e) {
@@ -134,6 +127,22 @@ function setupHeroForm() {
 
         document.activeElement.blur();
         document.querySelector('header .email').classList.add('thanks');
+    });
+}
+
+function setupCategoriesModal() {
+    var categoriesOptions = document.getElementById('categories-modal-options');
+    var categoriesButton = document.getElementById('categories-modal-button');
+
+    categoriesButton.addEventListener('click', function(e) {
+        console.log('TODO: Show categories modal');
+    }, false);
+
+    ajax.get('https://coalition-api.herokuapp.com/categories', function(res) {
+        var categories = JSON.parse(res);
+        var template = _.template(document.getElementById('template:categories').innerHTML);
+        var html = template({ categories: categories });
+        categoriesOptions.innerHTML = html;
     });
 }
 
