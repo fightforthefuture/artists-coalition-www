@@ -133,6 +133,30 @@
     </div>
 </div>
 
+<div class="overlay join-modal invisible" id="join-modal">
+    <div class="gutter">
+        <div class="modal">
+            <a class="close" href="#">×</a>
+            <h1>Add yourself as an artist!</h1>
+            <div class="path">
+                <span class="step-1 selected">Add your photo</span> <span class="arrow"></span> <span class="step-2">Information</span> <span class="arrow"></span> <span class="step-3">Social Media</span> <span class="arrow"></span> <span class="step-4">Finalize</span>
+            </div>
+            <form>
+
+                [Form]
+
+                <div class="buttons">
+                    <div class="border"></div>
+
+                    <button class="n">Cancel</button>
+
+                    <button class="y">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script type="template" id="template:artist">
 <div class="artist" style="background-image: url(<%= photo_url || 'images/the-creation-of-adam.jpg' %>)">
 <a class="name" href="<%= url || '#' %>" target="_blank"><%= name %></a>

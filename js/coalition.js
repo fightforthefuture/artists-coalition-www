@@ -61,6 +61,7 @@ var packery;
 
     prepareOverlays();
     setupCategoriesModal();
+    setupJoinModal();
 
     loadArtistsFromDB({
         category: state.category,
@@ -195,6 +196,25 @@ function setupCategoriesModal() {
     });
 }
 
+function setupJoinModal() {
+    var joinButtons = document.querySelectorAll('button.add-your-name');
+
+    _.each(joinButtons, function(joinButton) {
+        joinButton.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            modalShow('join-modal');
+        }, false);
+    });
+
+    var formButtons = document.querySelectorAll('#join-modal .buttons button');
+    _.each(formButtons, function(formButton) {
+        formButton.addEventListener('click', function(e) {
+            e.preventDefault();
+        }, false);
+    });
+}
+
 function respondToResizes() {
     var artistsContainer = document.getElementById('artists-section');
     var artistsView = document.getElementById('artists-view');
@@ -221,9 +241,9 @@ function respondToResizes() {
         }
 
         var modals = document.getElementsByClassName('modal');
-        for (var i = 0; i < modals.length; i++) {
-            modals[i].style.maxHeight = innerHeight + 'px';
-        }
+        _.each(modals, function(modal) {
+            modal.style.maxHeight = innerHeight + 'px';
+        });
     }, 16);
 
     addEventListener('resize', onResize, false);
@@ -248,9 +268,9 @@ function modalHide(id) {
 
 function prepareOverlays() {
     var modals = document.querySelectorAll('.overlay');
-    for (var i = 0; i < modals.length; i++) {
-        bindModalEvents(modals[i]);
-    }
+    _.each(modals, function(modal) {
+        bindModalEvents(modal);
+    });
 }
 
 function bindModalEvents(modal) {
@@ -265,6 +285,7 @@ function bindModalEvents(modal) {
 
     modal.querySelector('.modal .close').addEventListener('click', function(e) {
         e.preventDefault();
+        
         modalHide(modal.id);
     }.bind(this), false);
 }
