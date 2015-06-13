@@ -811,6 +811,14 @@ button.add-your-name:hover {
     position: absolute;
     right: 0;
     width: 235px;
+
+    -webkit-transition: border 0.3s;
+            transition: border 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-1 input:hover,
+.join-modal .gutter .modal form .step.step-1 input:focus {
+    border: 1px solid #c6c6c6;
 }
 
 .join-modal .gutter .modal form .step.step-1 input.your-name {
@@ -895,14 +903,17 @@ button.add-your-name:hover {
 
     .join-modal .gutter .modal form .step.step-1 input.your-name {
         top: 232px;
+        width: 226px;
     }
 
     .join-modal .gutter .modal form .step.step-1 input.your-website {
         top: 290px;
+        width: 226px;
     }
 
     .join-modal .gutter .modal form .step.step-1 .discipline {
         top: 346px;
+        width: 226px;
     }
 }
 
