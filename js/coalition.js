@@ -48,9 +48,12 @@ var ajax = {
 
 // Application globals.
 var state = {
+    aModalIsShowing: false,
     category: null,
     email: '',
+    isMobile: /mobile/i.test(navigator.userAgent),
     joinStep: 1,
+    showingModals: {},
 };
 var packery;
 
@@ -59,6 +62,8 @@ var packery;
 // Start application.
 (function() {
     setupHeroForm();
+
+    updateArtistsCount();
 
     prepareOverlays();
     setupCategoriesModal();
@@ -71,7 +76,19 @@ var packery;
     });
 
     respondToResizes();
+
+    if (state.isMobile) {
+        document.body.classList.add('mobile');
+    }
 })();
+
+
+
+function updateArtistsCount() {
+    ajax.get('https://coalition-api.herokuapp.com/artists/count', function(count) {
+        document.getElementById('artists-count').textContent = count;
+    });
+}
 
 
 
@@ -235,6 +252,55 @@ function setupJoinModal() {
         state.step++;
         updateJoinModalStep();
     }, false);
+
+    var uploadButton = document.getElementById('upload-a-photo');
+    uploadButton.querySelector('input').addEventListener('change', onImageChange, false);
+}
+
+function onImageChange() {
+    if (!this.files || !this.files[0]) {
+        return;
+    }
+
+    var uploadButton = document.getElementById('upload-a-photo');
+
+    file = this.files[0];
+    var reader = new FileReader();
+
+    var previewImg = document.getElementById('uploaded-photo-preview');
+    reader.onloadend = function() {
+        if (file.type === 'image/png' || file.type === 'image/jpeg') {
+            var image = new Image();
+            image.src = reader.result;
+            image.onload = function() {
+                console.log('YAY!');
+                console.log(image.width);
+                console.log(image.height);
+
+                console.log('reader.result: ' + reader.result);
+                previewImg.style.backgroundImage = 'url(' + reader.result + ')';
+                previewImg.style.display = 'block';
+            }
+        } else {
+            previewImg.style.display = 'none';
+            file = false;
+        }
+
+        if (file) {
+            uploadButton.classList.add('selected');
+        } else {
+            uploadButton.classList.remove('selected');
+        }
+
+        console.log('File detected!!'); // TODO: Remove this debug code.
+        console.log((file.size / 1024).toFixed(2) + ' kb'); // TODO: Remove this debug code.
+        console.log(file.type); // TODO: Remove this debug code.
+        console.log('Width =', previewImg.width); // TODO: Remove this debug code.
+        console.log('Height =', previewImg.height); // TODO: Remove this debug code.
+        console.log('---'); // TODO: Remove this debug code.
+    }
+
+    reader.readAsDataURL(file);
 }
 
 var buttonLabels = {
@@ -315,16 +381,42 @@ function respondToResizes() {
 }
 
 function modalShow(id) {
+    if (!state.aModalIsShowing) {
+        state.aModalIsShowing = true;
+        state.scrollY = scrollY;
+    }
+
+    state.showingModals[id] = true;
+
+    if (state.isMobile) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+    }
+
+    document.activeElement.blur();
+
     var overlayNode = document.getElementById(id);
     overlayNode.style.display = 'table';
     setTimeout(function() {
-        overlayNode.className = overlayNode.className.replace(/ ?invisible ?/, ' ');
+        overlayNode.classList.remove('invisible');
     }, 50);
 }
 
 function modalHide(id) {
+    delete state.showingModals[id];
+
+    if (Object.keys(state.showingModals).length === 0) {
+        if (state.isMobile) {
+            document.body.style.overflow = 'auto';
+            document.body.style.position = 'static';
+        }
+
+        state.aModalIsShowing = false;
+        scrollTo(0, state.scrollY);
+    }
+
     var overlayNode = document.getElementById(id);
-    overlayNode.className += 'invisible';
+    overlayNode.classList.add('invisible');
     setTimeout(function() {
         overlayNode.style.display = 'none';
     }, 400);

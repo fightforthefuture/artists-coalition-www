@@ -47,6 +47,7 @@ body {
     font-family: 'Open Sans Web', sans-serif;
     font-size: 32px;
     margin: 0;
+    position: relative;
 }
 body > header {
     background-color: #302f34;
@@ -63,7 +64,7 @@ body > header h1 {
     color: #f9f7ef;
     font-family: 'Raleway Web';
     font-family: 62px;
-    margin: 90px 0 16px;
+    padding: 90px 0 16px;
 }
 body > header h3 {
     color: #f9f7ef;
@@ -309,6 +310,7 @@ body > section.artists #artists-view.nothing .nothing {
             transform: scale(1);
 }
 body > section.artists #artists-view .artist {
+    background-size: cover;
     border-radius: 5px;
     color: #fff;
     font-size: 14px;
@@ -468,8 +470,10 @@ button.add-your-name:hover {
 /* Modals */
 .overlay {
     position: fixed;
-    left: 0px;
-    top: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, .5);
@@ -479,6 +483,9 @@ button.add-your-name:hover {
 
     -webkit-transition: opacity 0.4s ease-out 0s, left 0s linear 0s;
             transition: opacity 0.4s ease-out 0s, left 0s linear 0s;
+}
+body.mobile .overlay {
+    background: rgba(0, 0, 0, 1);
 }
 .overlay.invisible {
     pointer-events: none;
@@ -503,6 +510,8 @@ button.add-your-name:hover {
     position: relative;
     text-align: center;
     overflow-x: hidden;
+
+    -webkit-overflow-scrolling: touch;
 
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -532,7 +541,7 @@ button.add-your-name:hover {
 .overlay .modal h1 {
     background-color: #6871a8;
     color: white;
-    font-family: "Open Sans";
+    font-family: 'Open Sans Web';
     font-size: 26px;
     font-weight: 300;
     letter-spacing: 1px;
@@ -734,6 +743,18 @@ button.add-your-name:hover {
     text-align: left;
     top: 46px;
     width: 226px;
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo .cross {
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+            transition: opacity 0.3s, transform 0.3s;
 }
 
 /* Horizontal */
@@ -781,6 +802,9 @@ button.add-your-name:hover {
     position: absolute;
     text-align: center;
     width: 100%;
+
+    -webkit-transition: opacity 0.3s 0.1s, -webkit-transform 0.3s 0.1s;
+            transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
 }
 
 .join-modal .gutter .modal form .step.step-1 .upload-a-photo .button {
@@ -799,15 +823,47 @@ button.add-your-name:hover {
     text-transform: uppercase;
     width: 192px;
 
-    -webkit-transition: background-color 0.3s;
-            transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s, opacity 0.3s 0.2s, -webkit-transform 0.3s 0.2s;
+            transition: background-color 0.3s, opacity 0.3s 0.2s, transform 0.3s 0.2s;
 }
 
 .join-modal .gutter .modal form .step.step-1 .upload-a-photo:hover .button {
     background-color: #6d7cda;
 }
 
-.join-modal .gutter .modal form .step.step-1 input {
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo .uploaded-photo-preview {
+    /*background-color: #111;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo input {
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo.selected .cross,
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo.selected .size,
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo.selected .button {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+}
+
+.join-modal .gutter .modal form .step.step-1 .text-field  {
     border-radius: 5px;
     border: 1px solid #e1e1e1;
     color: #7f7f7f;
@@ -823,16 +879,16 @@ button.add-your-name:hover {
             transition: border 0.3s;
 }
 
-.join-modal .gutter .modal form .step.step-1 input:hover,
-.join-modal .gutter .modal form .step.step-1 input:focus {
+.join-modal .gutter .modal form .step.step-1 .text-field:hover,
+.join-modal .gutter .modal form .step.step-1 .text-field:focus {
     border: 1px solid #c6c6c6;
 }
 
-.join-modal .gutter .modal form .step.step-1 input.your-name {
+.join-modal .gutter .modal form .step.step-1 .text-field.your-name {
     top: 46px;
 }
 
-.join-modal .gutter .modal form .step.step-1 input.your-website {
+.join-modal .gutter .modal form .step.step-1 .text-field.your-website {
     top: 106px;
 }
 
@@ -908,12 +964,12 @@ button.add-your-name:hover {
         top: 48px;
     }
 
-    .join-modal .gutter .modal form .step.step-1 input.your-name {
+    .join-modal .gutter .modal form .step.step-1 .text-field.your-name {
         top: 232px;
         width: 226px;
     }
 
-    .join-modal .gutter .modal form .step.step-1 input.your-website {
+    .join-modal .gutter .modal form .step.step-1 .text-field.your-website {
         top: 290px;
         width: 226px;
     }

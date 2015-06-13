@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Artists Coalition</title>
     <link rel="stylesheet" href="css/coalition.css">
-    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="icon" href="favicon.ico">
 </head>
 <body>
@@ -144,15 +144,17 @@
             <form>
 
                 <div class="step step-1">
-                    <div class="upload-a-photo">
+                    <div class="upload-a-photo" id="upload-a-photo">
+                        <div class="uploaded-photo-preview" id="uploaded-photo-preview"></div>
                         <div class="cross"></div>
                         <div class="size">434x560px</div>
                         <div class="button">
                             Upload a photo
                         </div>
+                        <input class="input" id="uploaded-photo" type="file" />
                     </div>
-                    <input class="your-name" name="name" placeholder="YOUR NAME"></input>
-                    <input class="your-website" name="website" placeholder="YOUR WEBSITE"></input>
+                    <input class="text-field your-name" name="name" placeholder="YOUR NAME"></input>
+                    <input class="text-field your-website" name="website" placeholder="YOUR WEBSITE"></input>
                     <div class="discipline">
                         <div class="label">Discipline</div>
                         <div class="arrow"></div>
