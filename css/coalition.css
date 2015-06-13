@@ -114,13 +114,14 @@ body > header .email-border .email button {
     font-size: 18px;
     font-weight: 600;
     line-height: 40px;
+    opacity: 1;
     position: absolute;
     right: 5px;
     top: 4px;
     width: 170px;
 
-    -webkit-transition: background-color 0.3s;
-            transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s, opacity 0.3s 0.1s;
+            transition: background-color 0.3s, opacity 0.3s 0.1s;
 }
 body > header .email-border .email button:hover {
     background-color: #11b9ff;
@@ -141,15 +142,21 @@ body > header .email-border .email .thanks-message {
 body > header .email-border .email.thanks {
     background-color: #62c7dc;
 }
-body > header .email-border .email.thanks button,
-body > header .email-border .email.thanks input {
-    animation: thanksFormElementsSlide 0.3s forwards;
-    -webkit-animation: thanksFormElementsSlide 0.3s forwards;
-
+body > header .email-border .email.thanks button {
+    cursor: default;
     opacity: 0;
 
-    -webkit-transition: scale(0);
-            transition: scale(0);
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+body > header .email-border .email.thanks input {
+    animation: thanksFormInputSlide 0.3s forwards;
+    -webkit-animation: thanksFormInputSlide 0.3s forwards;
 
     -webkit-touch-callout: none;
       -webkit-user-select: none;
@@ -159,8 +166,8 @@ body > header .email-border .email.thanks input {
               user-select: none;
 }
 body > header .email-border .email.thanks .thanks-message {
-    animation: thanksMessageSlide 0.3s 0.3s forwards;
-    -webkit-animation: thanksMessageSlide 0.3s 0.3s forwards;
+    animation: thanksMessageSlide 0.3s 0.5s forwards;
+    -webkit-animation: thanksMessageSlide 0.3s 0.5s forwards;
     
     display: block;
 }
@@ -762,8 +769,8 @@ button.add-your-name:hover {
 
 .join-modal .gutter .modal form .step.step-1 .upload-a-photo:hover .cross::before,
 .join-modal .gutter .modal form .step.step-1 .upload-a-photo:hover .cross::after {
-    -webkit-transform: scale(1.127);
-            transform: scale(1.127);
+    -webkit-transform: scale(1.247);
+            transform: scale(1.247);
 }
 
 .join-modal .gutter .modal form .step.step-1 .upload-a-photo .size {
@@ -945,7 +952,7 @@ button.add-your-name:hover {
         opacity: 1;
     }
 }
-@keyframes thanksFormElementsSlide {
+@keyframes thanksFormInputSlide {
     from {
         transform: scale(1);
         opacity: 1;
@@ -956,7 +963,7 @@ button.add-your-name:hover {
         opacity: 0;
     }
 }
-@-webkit-keyframes thanksFormElementsSlide {
+@-webkit-keyframes thanksFormInputSlide {
     from {
         -webkit-transform: scale(1);
         opacity: 1;
