@@ -204,9 +204,8 @@ function setupJoinModal() {
         joinButton.addEventListener('click', function(e) {
             e.preventDefault();
 
-            state.joinStep = 1;
-
-            updateJoinModalStep(state.joinStep);
+            state.step = 1;
+            updateJoinModalStep();
 
             modalShow('join-modal');
         }, false);
@@ -215,25 +214,25 @@ function setupJoinModal() {
     document.querySelector('#join-modal button.n').addEventListener('click', function(e) {
         e.preventDefault();
 
-        if (state.joinStep === 1) {
+        if (state.step === 1) {
             modalHide('join-modal');
             return;
         }
 
-        state.joinStep--;
+        state.step--;
         updateJoinModalStep();
     }, false);
 
     document.querySelector('#join-modal button.y').addEventListener('click', function(e) {
         e.preventDefault();
 
-        if (state.joinStep === 4) {
+        if (state.step === 4) {
             console.log('TODO: Submit form!');
             modalHide('join-modal');
             return;
         }
 
-        state.joinStep++;
+        state.step++;
         updateJoinModalStep();
     }, false);
 }
@@ -255,18 +254,29 @@ var buttonLabels = {
 };
 
 function updateJoinModalStep() {
+    // Update path labels.
     var labels = document.querySelectorAll('#join-modal .path .step');
     _.each(labels, function(label, i) {
-        if (state.joinStep === i + 1) {
+        if (state.step === i + 1) {
             label.classList.add('selected');
         } else {
             label.classList.remove('selected');
         }
     });
 
-    document.querySelector('#join-modal .buttons button.n').textContent = buttonLabels.n[state.joinStep - 1];
+    // Update button labels.
+    document.querySelector('#join-modal .buttons button.n').textContent = buttonLabels.n[state.step - 1];
+    document.querySelector('#join-modal .buttons button.y').textContent = buttonLabels.y[state.step - 1];
 
-    document.querySelector('#join-modal .buttons button.y').textContent = buttonLabels.y[state.joinStep - 1];
+    // Show & hide forms.
+    var forms = document.querySelectorAll('#join-modal form .step');
+    _.each(forms, function(form, i) {
+        if (state.step === i + 1) {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    });
 }
 
 function respondToResizes() {

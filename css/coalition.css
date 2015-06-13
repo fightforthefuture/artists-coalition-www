@@ -703,6 +703,162 @@ button.add-your-name:hover {
     background-color: #3ae0b4;
 }
 
+.join-modal .gutter .modal form .step {
+    display: none;
+}
+
+.join-modal .gutter .modal form .step.step-1 {
+    display: block; /* Temporary! */
+
+    height: 252px;
+    margin: 0 auto;
+    position: relative;
+    width: 484px;
+}
+
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #e1e1e1;
+    cursor: pointer;
+    height: 168px;
+    left: 0;
+    position: absolute;
+    text-align: left;
+    top: 46px;
+    width: 226px;
+}
+
+/* Horizontal */
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo .cross::before {
+    background-color: #e2e2e2;
+    content: '';
+    height: 52px;
+    left: 112px;
+    position: absolute;
+    top: 25px;
+    width: 2px;
+}
+
+/* Vertical */
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo .cross::after {
+    background-color: #e2e2e2;
+    content: '';
+    height: 2px;
+    left: 86px;
+    position: absolute;
+    top: 50px;
+    width: 52px;
+}
+
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo .cross::before,
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo .cross::after {
+    -webkit-transition: -webkit-transform 0.3s;
+            transition: transform 0.3s;
+
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo:hover .cross::before,
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo:hover .cross::after {
+    -webkit-transform: scale(1.127);
+            transform: scale(1.127);
+}
+
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo .size {
+    bottom: 56px;
+    color: #8d8d8d;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo .button {
+    background-color: #6871a8;
+    border-radius: 5px;
+    border: none;
+    bottom: 13px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    left: 16px;
+    line-height: 36px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    width: 192px;
+
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo:hover .button {
+    background-color: #6d7cda;
+}
+
+.join-modal .gutter .modal form .step.step-1 input {
+    border-radius: 5px;
+    border: 1px solid #e1e1e1;
+    color: #7f7f7f;
+    font-size: 16px;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 18px;
+    position: absolute;
+    right: 0;
+    width: 235px;
+}
+
+.join-modal .gutter .modal form .step.step-1 input.your-name {
+    top: 46px;
+}
+
+.join-modal .gutter .modal form .step.step-1 input.your-website {
+    top: 106px;
+}
+
+.join-modal .gutter .modal form .step.step-1 .discipline {
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+    color: #7f7f7f;
+    cursor: pointer;
+    font-size: 16px;
+    height: 46px;
+    line-height: 46px;
+    position: absolute;
+    right: 0;
+    top: 166px;
+    width: 235px;
+}
+
+.join-modal .gutter .modal form .step.step-1 .discipline .label {
+    background-color: #fff;
+    border-radius: 4px 0 0 4px;
+    height: 44px;
+    line-height: 42px;
+    padding: 0 0 0 20px;
+    text-align: left;
+    text-transform: uppercase;
+    position: absolute;
+    width: 187px;
+}
+
+.join-modal .gutter .modal form .step.step-1 .discipline .arrow {
+    background-color: #D8D8D8;
+    background-image: url("../images/downwards-arrow-dark.png");
+    background-position: 12px 17px;
+    background-repeat: no-repeat;
+    border-radius: 0px 4px 4px 0px;
+    height: 44px;
+    position: absolute;
+    right: 0px;
+    width: 46px;
+}
+
 @media screen and (max-width: 579px) {
     .join-modal .gutter .modal .path {
         display: none;
@@ -714,18 +870,39 @@ button.add-your-name:hover {
 
     .join-modal .gutter .modal form .buttons .border {
         height: 2px;
-        margin: 0 auto 8px;
+        margin: 0 auto 16px;
         width: 130px;
     }
 
     .join-modal .gutter .modal form .buttons button.n {
         display: block;
-        margin: 0 auto 6px;
+        margin: 0 auto 12px;
     }
 
     .join-modal .gutter .modal form .buttons button.y {
         display: block;
         margin: 0 auto;
+    }
+
+    .join-modal .gutter .modal form .step.step-1 {
+        height: 406px;
+        width: 226px;
+    }
+
+    .join-modal .gutter .modal form .step.step-1 .upload-a-photo {
+        top: 48px;
+    }
+
+    .join-modal .gutter .modal form .step.step-1 input.your-name {
+        top: 232px;
+    }
+
+    .join-modal .gutter .modal form .step.step-1 input.your-website {
+        top: 290px;
+    }
+
+    .join-modal .gutter .modal form .step.step-1 .discipline {
+        top: 346px;
     }
 }
 
