@@ -530,7 +530,7 @@ button.add-your-name:hover {
     color: white;
     font-family: "Open Sans";
     font-size: 26px;
-    font-weight: bold;
+    font-weight: 300;
     letter-spacing: 1px;
     line-height: 31px;
     margin-bottom: 4px;
@@ -604,7 +604,7 @@ button.add-your-name:hover {
 
 .categories-modal .gutter .modal,
 .categories-modal .gutter .modal h1 {
-    background-color: #62c7dc;
+    background-color: #6871a8;
 }
 
 .categories-modal .gutter .modal .options {
