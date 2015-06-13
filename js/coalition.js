@@ -378,10 +378,11 @@ function onImageChange() {
             uploadButton.classList.add('selected');
             uploadButton.classList.remove('error');
             state.imageFile = file;
-            document.activeElement.blur();
         } else {
             uploadButton.classList.remove('selected');
+            uploadButton.classList.add('error');
             state.imageFile = null;
+            alert('Please select an image. (.jpg or .png)')
         }
     }
 
