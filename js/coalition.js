@@ -499,10 +499,10 @@ function modalHide(id) {
         if (state.isMobile) {
             document.body.style.overflow = 'auto';
             document.body.style.position = 'static';
+            scrollTo(0, state.scrollY);
         }
 
         state.aModalIsShowing = false;
-        scrollTo(0, state.scrollY);
     }
 
     var overlayNode = document.getElementById(id);
