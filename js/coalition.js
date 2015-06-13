@@ -50,6 +50,7 @@ var ajax = {
 var state = {
     aModalIsShowing: false,
     category: null,
+    discipline: null,
     email: '',
     isMobile: /mobile/i.test(navigator.userAgent),
     joinStep: 1,
@@ -172,6 +173,7 @@ function setupHeroForm() {
 
 function setupCategoriesModal() {
     var categoriesOptions = document.getElementById('categories-modal-options');
+    var disciplinesOptions = document.getElementById('disciplines-modal-options');
     var categoriesButton = document.getElementById('categories-modal-button');
 
     categoriesButton.addEventListener('click', function(e) {
@@ -200,17 +202,32 @@ function setupCategoriesModal() {
         });
     }, false);
 
+    disciplinesOptions.addEventListener('click', function(e) {
+        if (!e.target.classList.contains('option')) return;
+        
+        var id = e.target.getAttribute('data-id');
+        var name = e.target.textContent.trim();
+
+        state.discipline = id;
+
+        modalHide('disciplines-modal');
+
+        document.getElementById('discipline-label').textContent = name;
+    }, false);
+
     // Populate categories.
     ajax.get('https://coalition-api.herokuapp.com/categories', function(res) {
+        var template = _.template(document.getElementById('template:categories').innerHTML);
+        
+        var disciplines = JSON.parse(res);
+        disciplinesOptions.innerHTML = template({ categories: disciplines });
+
         var categories = JSON.parse(res);
         categories.unshift({
             id: 0,
-            name: "All",
+            name: 'All',
         });
-
-        var template = _.template(document.getElementById('template:categories').innerHTML);
-        var html = template({ categories: categories });
-        categoriesOptions.innerHTML = html;
+        categoriesOptions.innerHTML = template({ categories: categories });
     });
 }
 
@@ -255,6 +272,12 @@ function setupJoinModal() {
 
     var uploadButton = document.getElementById('upload-a-photo');
     uploadButton.querySelector('input').addEventListener('change', onImageChange, false);
+
+    document.getElementById('discipline-button').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        modalShow('disciplines-modal');
+    }, false);
 }
 
 function onImageChange() {

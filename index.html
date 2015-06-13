@@ -155,8 +155,8 @@
                     </div>
                     <input class="text-field your-name" name="name" placeholder="YOUR NAME"></input>
                     <input class="text-field your-website" name="website" placeholder="YOUR WEBSITE"></input>
-                    <div class="discipline">
-                        <div class="label">Discipline</div>
+                    <div class="discipline" id="discipline-button">
+                        <div class="label" id="discipline-label">Discipline</div>
                         <div class="arrow"></div>
                     </div>
                 </div>
@@ -178,6 +178,16 @@
                     <button class="y">Next</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="overlay categories-modal invisible" id="disciplines-modal">
+    <div class="gutter">
+        <div class="modal">
+            <a class="close" href="#">×</a>
+            <h1>Disciplines</h1>
+            <div id="disciplines-modal-options" class="options"></div>
         </div>
     </div>
 </div>
