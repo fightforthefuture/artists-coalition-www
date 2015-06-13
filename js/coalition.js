@@ -48,8 +48,9 @@ var ajax = {
 
 // Application globals.
 var state = {
-    email: '',
     category: null,
+    email: '',
+    joinStep: 1,
 };
 var packery;
 
@@ -203,16 +204,69 @@ function setupJoinModal() {
         joinButton.addEventListener('click', function(e) {
             e.preventDefault();
 
+            state.joinStep = 1;
+
+            updateJoinModalStep(state.joinStep);
+
             modalShow('join-modal');
         }, false);
     });
 
-    var formButtons = document.querySelectorAll('#join-modal .buttons button');
-    _.each(formButtons, function(formButton) {
-        formButton.addEventListener('click', function(e) {
-            e.preventDefault();
-        }, false);
+    document.querySelector('#join-modal button.n').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        if (state.joinStep === 1) {
+            modalHide('join-modal');
+            return;
+        }
+
+        state.joinStep--;
+        updateJoinModalStep();
+    }, false);
+
+    document.querySelector('#join-modal button.y').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        if (state.joinStep === 4) {
+            console.log('TODO: Submit form!');
+            modalHide('join-modal');
+            return;
+        }
+
+        state.joinStep++;
+        updateJoinModalStep();
+    }, false);
+}
+
+var buttonLabels = {
+    n: [
+        'Cancel',
+        'Back',
+        'Back',
+        'Back',
+    ],
+
+    y: [
+        'Next',
+        'Next',
+        'Finalize',
+        'Submit',
+    ],
+};
+
+function updateJoinModalStep() {
+    var labels = document.querySelectorAll('#join-modal .path .step');
+    _.each(labels, function(label, i) {
+        if (state.joinStep === i + 1) {
+            label.classList.add('selected');
+        } else {
+            label.classList.remove('selected');
+        }
     });
+
+    document.querySelector('#join-modal .buttons button.n').textContent = buttonLabels.n[state.joinStep - 1];
+
+    document.querySelector('#join-modal .buttons button.y').textContent = buttonLabels.y[state.joinStep - 1];
 }
 
 function respondToResizes() {
@@ -285,7 +339,7 @@ function bindModalEvents(modal) {
 
     modal.querySelector('.modal .close').addEventListener('click', function(e) {
         e.preventDefault();
-        
+
         modalHide(modal.id);
     }.bind(this), false);
 }

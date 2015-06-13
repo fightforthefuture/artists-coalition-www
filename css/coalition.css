@@ -615,19 +615,24 @@ button.add-your-name:hover {
 .join-modal .gutter .modal .path {
     background-color: #f7f7f7;
     border-bottom: 1px solid #e9e9e9;
-    color: #bdc3c8;
     font-size: 14px;
     font-weight: 700;
     line-height: 70px;
     text-transform: uppercase;
 }
 
-.join-modal .gutter .modal .path .selected {
+.join-modal .gutter .modal .path .step {
+    color: #bdc3c8;
+
+    -webkit-transition: color 0.3s;
+            transition: color 0.3s;
+}
+
+.join-modal .gutter .modal .path .step.selected {
     color: #475a67;
 }
 
 .join-modal .gutter .modal .path .arrow {
-    color: #B7B7B7;
     background-image: url("../images/right-arrow.png");
     display: inline-block;
     font-weight: 400;
