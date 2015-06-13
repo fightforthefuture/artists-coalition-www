@@ -120,6 +120,10 @@ function loadArtistsFromDB(params) {
         var container = document.createElement('div');
         var fragment = document.createDocumentFragment();
         _.each(artistsData, function(artistData) {
+            if (!/^https?:\/\//.test(artistData.url)) {
+                artistData.url = 'http://' + artistData.url;
+            }
+
             container.innerHTML = artistTemplate(artistData);
             element = container.firstElementChild
             elements.push(element);
@@ -382,7 +386,7 @@ function onImageChange() {
             uploadButton.classList.remove('selected');
             uploadButton.classList.add('error');
             state.imageFile = null;
-            alert('Please select an image. (.jpg or .png)')
+            alert('Please select a JPG or PNG image.')
         }
     }
 
