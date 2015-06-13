@@ -141,7 +141,7 @@
             <div class="path">
                 <span class="step step-1 selected">Add your photo</span> <span class="arrow"></span> <span class="step step-2">Information</span> <span class="arrow"></span> <span class="step step-3">Social Media</span> <span class="arrow"></span> <span class="step step-4">Finalize</span>
             </div>
-            <form>
+            <form id="join-modal-form">
 
                 <div class="step step-1">
                     <div class="upload-a-photo" id="upload-a-photo">
@@ -153,9 +153,9 @@
                         </div>
                         <input class="input" id="uploaded-photo" type="file" />
                     </div>
-                    <input class="text-field your-name" name="name" placeholder="YOUR NAME"></input>
-                    <input class="text-field your-website" name="website" placeholder="YOUR WEBSITE"></input>
-                    <div class="discipline" id="discipline-button">
+                    <input class="text-field your-name" name="name" placeholder="YOUR NAME" id="your-name-field"></input>
+                    <input class="text-field your-website" name="website" placeholder="YOUR WEBSITE" id="your-website-field"></input>
+                    <div class="discipline" id="disciplines-modal-button">
                         <div class="label" id="discipline-label">Discipline</div>
                         <div class="arrow"></div>
                     </div>
@@ -173,9 +173,9 @@
                 <div class="buttons">
                     <div class="border"></div>
 
-                    <button class="n">Cancel</button>
+                    <input class="n" type="button" value="Cancel" />
 
-                    <button class="y">Next</button>
+                    <input class="y" type="submit" value="Next" />
                 </div>
             </form>
         </div>

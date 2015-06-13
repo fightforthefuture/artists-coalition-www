@@ -675,7 +675,7 @@ body.mobile .overlay {
     max-width: 480px;
 }
 
-.join-modal .gutter .modal form .buttons button.n {
+.join-modal .gutter .modal form .buttons .n {
     background-color: rgba(255, 255, 255, 0);
     border-radius: 5px;
     border: 2px solid #acacac;
@@ -693,11 +693,11 @@ body.mobile .overlay {
             transition: background-color 0.3s;
 }
 
-.join-modal .gutter .modal form .buttons button.n:hover {
+.join-modal .gutter .modal form .buttons .n:hover {
     background-color: rgba(255, 255, 255, 1);
 }
 
-.join-modal .gutter .modal form .buttons button.y {
+.join-modal .gutter .modal form .buttons .y {
     background-color: #3ccaa4;
     border: none;
     border-radius: 5px;
@@ -715,7 +715,7 @@ body.mobile .overlay {
             transition: background-color 0.3s;
 }
 
-.join-modal .gutter .modal form .buttons button.y:hover {
+.join-modal .gutter .modal form .buttons .y:hover {
     background-color: #3ae0b4;
 }
 
@@ -906,6 +906,13 @@ body.mobile .overlay {
     width: 235px;
 }
 
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo.error,
+.join-modal .gutter .modal form .step.step-1 .text-field.error,
+.join-modal .gutter .modal form .step.step-1 .discipline.error {
+    background-color: #fff1f1;
+    border: 1px solid #eb7272;
+}
+
 .join-modal .gutter .modal form .step.step-1 .discipline .label {
     background-color: #fff;
     border-radius: 4px 0 0 4px;
@@ -945,12 +952,12 @@ body.mobile .overlay {
         width: 130px;
     }
 
-    .join-modal .gutter .modal form .buttons button.n {
+    .join-modal .gutter .modal form .buttons .n {
         display: block;
         margin: 0 auto 12px;
     }
 
-    .join-modal .gutter .modal form .buttons button.y {
+    .join-modal .gutter .modal form .buttons .y {
         display: block;
         margin: 0 auto;
     }

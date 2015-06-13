@@ -52,6 +52,7 @@ var state = {
     category: null,
     discipline: null,
     email: '',
+    imageFile: null,
     isMobile: /mobile/i.test(navigator.userAgent),
     joinStep: 1,
     showingModals: {},
@@ -173,8 +174,10 @@ function setupHeroForm() {
 
 function setupCategoriesModal() {
     var categoriesOptions = document.getElementById('categories-modal-options');
-    var disciplinesOptions = document.getElementById('disciplines-modal-options');
     var categoriesButton = document.getElementById('categories-modal-button');
+
+    var disciplinesButton = document.getElementById('disciplines-modal-button');
+    var disciplinesOptions = document.getElementById('disciplines-modal-options');
 
     categoriesButton.addEventListener('click', function(e) {
         modalShow('categories-modal');
@@ -212,6 +215,7 @@ function setupCategoriesModal() {
 
         modalHide('disciplines-modal');
 
+        disciplinesButton.classList.remove('error');
         document.getElementById('discipline-label').textContent = name;
     }, false);
 
@@ -231,6 +235,44 @@ function setupCategoriesModal() {
     });
 }
 
+var validateStep = {
+    '1': function() {
+        if (!state.imageFile) {
+            alert('Please select an image.');
+            document.getElementById('upload-a-photo').classList.add('error');
+            return false;
+        }
+
+        var nameField = document.getElementById('your-name-field');
+        var name = nameField.value;
+        if (!name) {
+            alert('Please enter your name.');
+            nameField.classList.add('error');
+            nameField.focus();
+            return false;
+        }
+        
+        var websiteField = document.getElementById('your-website-field');
+        var website = websiteField.value;
+        if (!website) {
+            alert('Please enter your website.');
+            websiteField.classList.add('error');
+            websiteField.focus();
+            return false;
+        }
+
+        var disciplinesButton = document.getElementById('disciplines-modal-button');
+        var discipline = state.discipline;
+        if (!discipline) {
+            alert('Please select a discipline.');
+            disciplinesButton.classList.add('error');
+            return false;
+        }
+
+        return true;
+    },
+};
+
 function setupJoinModal() {
     var joinButtons = document.querySelectorAll('button.add-your-name');
 
@@ -245,8 +287,27 @@ function setupJoinModal() {
         }, false);
     });
 
-    document.querySelector('#join-modal button.n').addEventListener('click', function(e) {
+    function onTextFieldChange(e) {
+        if (this.value) {
+            this.classList.remove('error');
+        } else {
+            this.classList.add('error');
+        }
+    }
+    _.each(document.querySelectorAll('#join-modal .step-1 .text-field'), function(textField) {
+        textField.addEventListener('keyup', onTextFieldChange);
+        textField.addEventListener('blur', onTextFieldChange);
+    });
+
+    document.getElementById('join-modal-form').addEventListener('submit', function(e) {
         e.preventDefault();
+
+    }, false);
+
+    function previous(e) {
+        if (e) {
+            e.preventDefault();
+        }
 
         if (state.step === 1) {
             modalHide('join-modal');
@@ -255,25 +316,34 @@ function setupJoinModal() {
 
         state.step--;
         updateJoinModalStep();
-    }, false);
+    }
 
-    document.querySelector('#join-modal button.y').addEventListener('click', function(e) {
-        e.preventDefault();
+    document.querySelector('#join-modal .n').addEventListener('click', previous, false);
+
+    function next(e) {
+        if (e) {
+            e.preventDefault();
+        }
+
+        if (validateStep[state.step] && !validateStep[state.step]()) {
+            return;
+        }
 
         if (state.step === 4) {
-            console.log('TODO: Submit form!');
             modalHide('join-modal');
             return;
         }
 
         state.step++;
         updateJoinModalStep();
-    }, false);
+    }
+
+    document.querySelector('#join-modal .y').addEventListener('click', next, false);
 
     var uploadButton = document.getElementById('upload-a-photo');
     uploadButton.querySelector('input').addEventListener('change', onImageChange, false);
 
-    document.getElementById('discipline-button').addEventListener('click', function(e) {
+    document.getElementById('disciplines-modal-button').addEventListener('click', function(e) {
         e.preventDefault();
 
         modalShow('disciplines-modal');
@@ -287,7 +357,7 @@ function onImageChange() {
 
     var uploadButton = document.getElementById('upload-a-photo');
 
-    file = this.files[0];
+    var file = this.files[0];
     var reader = new FileReader();
 
     var previewImg = document.getElementById('uploaded-photo-preview');
@@ -296,11 +366,6 @@ function onImageChange() {
             var image = new Image();
             image.src = reader.result;
             image.onload = function() {
-                console.log('YAY!');
-                console.log(image.width);
-                console.log(image.height);
-
-                console.log('reader.result: ' + reader.result);
                 previewImg.style.backgroundImage = 'url(' + reader.result + ')';
                 previewImg.style.display = 'block';
             }
@@ -311,16 +376,13 @@ function onImageChange() {
 
         if (file) {
             uploadButton.classList.add('selected');
+            uploadButton.classList.remove('error');
+            state.imageFile = file;
+            document.activeElement.blur();
         } else {
             uploadButton.classList.remove('selected');
+            state.imageFile = null;
         }
-
-        console.log('File detected!!'); // TODO: Remove this debug code.
-        console.log((file.size / 1024).toFixed(2) + ' kb'); // TODO: Remove this debug code.
-        console.log(file.type); // TODO: Remove this debug code.
-        console.log('Width =', previewImg.width); // TODO: Remove this debug code.
-        console.log('Height =', previewImg.height); // TODO: Remove this debug code.
-        console.log('---'); // TODO: Remove this debug code.
     }
 
     reader.readAsDataURL(file);
@@ -354,8 +416,8 @@ function updateJoinModalStep() {
     });
 
     // Update button labels.
-    document.querySelector('#join-modal .buttons button.n').textContent = buttonLabels.n[state.step - 1];
-    document.querySelector('#join-modal .buttons button.y').textContent = buttonLabels.y[state.step - 1];
+    document.querySelector('#join-modal .buttons .n').value = buttonLabels.n[state.step - 1];
+    document.querySelector('#join-modal .buttons .y').value = buttonLabels.y[state.step - 1];
 
     // Show & hide forms.
     var forms = document.querySelectorAll('#join-modal form .step');
