@@ -732,6 +732,18 @@ body.mobile .overlay {
     width: 484px;
 }
 
+.join-modal .gutter .modal form .step.step-1 .upload-a-photo-label {
+    color: #bac0c4;
+    display: none;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 16px;
+    width: 100%;
+}
+
 .join-modal .gutter .modal form .step.step-1 .upload-a-photo {
     background-color: #fff;
     border-radius: 5px;
@@ -965,6 +977,10 @@ body.mobile .overlay {
     .join-modal .gutter .modal form .step.step-1 {
         height: 406px;
         width: 226px;
+    }
+
+    .join-modal .gutter .modal form .step.step-1 .upload-a-photo-label {
+        display: block;
     }
 
     .join-modal .gutter .modal form .step.step-1 .upload-a-photo {
