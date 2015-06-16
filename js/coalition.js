@@ -54,7 +54,7 @@ var state = {
     email: '',
     imageFile: null,
     isMobile: /mobile/i.test(navigator.userAgent),
-    joinStep: 1,
+    step: 1,
     showingModals: {},
 };
 var packery;
@@ -82,6 +82,13 @@ var packery;
     if (state.isMobile) {
         document.body.classList.add('mobile');
     }
+
+    // DEBUG!
+    setTimeout(function() {
+        state.step = 2;
+        updateJoinModalStep();
+        modalShow('join-modal');
+    });
 })();
 
 
@@ -352,6 +359,28 @@ function setupJoinModal() {
 
         modalShow('disciplines-modal');
     }, false);
+
+
+    var count = document.querySelector('#join-modal-form .step-2 .limit .amount');
+    var biographyTextArea = document.querySelector('#join-modal-form .step-2 textarea.biography');
+    var biographyPreview = document.querySelector('#join-modal-form .step-2 .preview .biography');
+    var artistName = document.querySelector('#join-modal-form .step-2 .preview .name');
+
+    biographyTextArea.addEventListener('keyup', function(e) {
+        var maxLength = 320;
+        var nameLength = artistName.textContent.length;
+        var totalLength = nameLength + this.value.length;
+
+        if (totalLength > maxLength) {
+            biographyTextArea.value = biographyTextArea.value.substr(0, maxLength);
+            totalLength = maxLength;
+        }
+
+        biographyPreview.textContent = biographyTextArea.value;
+
+        var remaining = maxLength - totalLength;
+        count.textContent = remaining;
+    });
 }
 
 function onImageChange() {

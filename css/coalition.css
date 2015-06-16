@@ -541,7 +541,7 @@ body.mobile .overlay {
 .overlay .modal h1 {
     background-color: #6871a8;
     color: white;
-    font-family: 'Open Sans Web';
+    font-family: 'Open Sans Web', sans-serif;
     font-size: 26px;
     font-weight: 300;
     letter-spacing: 1px;
@@ -723,9 +723,35 @@ body.mobile .overlay {
     display: none;
 }
 
-.join-modal .gutter .modal form .step.step-1 {
-    display: block; /* Temporary! */
 
+
+@media screen and (max-width: 579px) {
+    .join-modal .gutter .modal .path {
+        display: none;
+    }
+
+    .join-modal .gutter .modal form .buttons {
+        padding: 0 0 35px;
+    }
+
+    .join-modal .gutter .modal form .buttons .border {
+        height: 2px;
+        margin: 0 auto 16px;
+        width: 130px;
+    }
+
+    .join-modal .gutter .modal form .buttons .n {
+        display: block;
+        margin: 0 auto 12px;
+    }
+
+    .join-modal .gutter .modal form .buttons .y {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.join-modal .gutter .modal form .step.step-1 {
     height: 252px;
     margin: 0 auto;
     position: relative;
@@ -950,30 +976,6 @@ body.mobile .overlay {
 }
 
 @media screen and (max-width: 579px) {
-    .join-modal .gutter .modal .path {
-        display: none;
-    }
-
-    .join-modal .gutter .modal form .buttons {
-        padding: 0 0 35px;
-    }
-
-    .join-modal .gutter .modal form .buttons .border {
-        height: 2px;
-        margin: 0 auto 16px;
-        width: 130px;
-    }
-
-    .join-modal .gutter .modal form .buttons .n {
-        display: block;
-        margin: 0 auto 12px;
-    }
-
-    .join-modal .gutter .modal form .buttons .y {
-        display: block;
-        margin: 0 auto;
-    }
-
     .join-modal .gutter .modal form .step.step-1 {
         height: 406px;
         width: 226px;
@@ -1000,6 +1002,104 @@ body.mobile .overlay {
     .join-modal .gutter .modal form .step.step-1 .discipline {
         top: 346px;
         width: 226px;
+    }
+}
+
+.join-modal .gutter .modal form .step.step-2 {
+    height: 312px;
+    margin: 0 auto;
+    position: relative;
+    width: 450px;
+}
+
+.join-modal .gutter .modal form .step.step-2 .preview {
+    left: 0;
+    position: absolute;
+    width: 174px;
+    top: 0;
+}
+
+.join-modal .gutter .modal form .step.step-2 .preview .label {
+    color: #bac0c4;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 16px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-2 .preview .image {
+    background-image: url('../images/the-creation-of-adam.jpg');
+    background-size: cover;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 238px;
+    position: absolute;
+    top: 46px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-2 .preview .text {
+    color: #fff;
+    font-size: 11px;
+    height: 238px;
+    padding: 16px 16px 16px 24px;
+    position: absolute;
+    text-align: left;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .982);
+    top: 46px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-2 .preview .text .name {
+    color: #00ff66;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.join-modal .gutter .modal form .step.step-2 .fields {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 235px;
+}
+
+.join-modal .gutter .modal form .step.step-2 .fields .limit {
+    color: #bbbfc2;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    right: 3px;
+    text-align: right;
+    top: 20px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-2 .fields textarea.biography {
+    border-radius: 5px;
+    border: 1px solid #e1e1e1;
+    color: #7f7f7f;
+    font-family: 'Open Sans Web', sans-serif;
+    font-size: 16px;
+    height: 238px;
+    padding: 16px 18px;
+    position: absolute;
+    right: 0;
+    resize: none;
+    top: 45px;
+    width: 100%;
+}
+
+@media screen and (max-width: 579px) {
+    .join-modal .gutter .modal form .step.step-2 {
+        height: 334px;
+        width: 235px;
+    }
+
+    .join-modal .gutter .modal form .step.step-2 .preview {
+        display: none;
     }
 }
 
