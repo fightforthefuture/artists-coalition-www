@@ -95,7 +95,7 @@ var packery;
 
     // DEBUG!
     setTimeout(function() {
-        state.step = 3;
+        state.step = 1;
         updateJoinModalStep();
         modalShow('join-modal');
     });
@@ -282,6 +282,12 @@ var prepareStep = {
         var biographySpan = document.querySelector('#join-modal-form .step-3 .preview .biography');
         biographySpan.textContent = state.biography;
     },
+
+    '4': function() {
+        var step3Preview = document.querySelector('#join-modal-form .step-3 .preview');
+        var step4Preview = document.querySelector('#join-modal-form .step-4 .preview');
+        step4Preview.innerHTML = step3Preview.innerHTML;
+    },
 }
 
 var validateStep = {
@@ -402,6 +408,7 @@ function setupJoinModal() {
         }
 
         if (state.step === 4) {
+            sendSubmission();
             modalHide('join-modal');
             return;
         }
@@ -524,6 +531,26 @@ function setupJoinModal() {
     }
 }
 
+function sendSubmission() {
+    modalShow('uploading-modal');
+
+    var data = new FormData();
+    data.append('name', state.name);
+    data.append('url', state.website);
+    data.append('biography', state.biography);
+    data.append('category_id', state.discipline);
+    data.append('facebook', state.facebook);
+    data.append('twitter', state.twitter);
+    data.append('bandcamp', state.bandcamp);
+    data.append('tumblr', state.tumblr);
+    data.append('image', state.imageFile);
+    ajax.post('https://coalition-api.herokuapp.com/artists/', data, function(res) {
+        modalHide('uploading-modal');
+        modalShow('uploaded-modal');
+    });
+
+}
+
 var allowedSocialKeys = {
     'bandcamp': {
         name: 'Bandcamp',
@@ -562,6 +589,7 @@ function generateSocialLinksHTML(obj) {
             if (url.match(key + '\.com')) {
                 url = 'http://' + url;
             } else {
+                url = url.replace('@', '');
                 url = socialSite.template.replace('@', url);
             }
         }

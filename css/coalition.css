@@ -1029,7 +1029,7 @@ body.mobile .overlay {
 }
 
 .join-modal .gutter .modal form .step.step-1 .discipline .arrow {
-    background-color: #D8D8D8;
+    background-color: #d8d8d8;
     background-image: url("../images/downwards-arrow-dark.png");
     background-position: 12px 17px;
     background-repeat: no-repeat;
@@ -1038,6 +1038,13 @@ body.mobile .overlay {
     position: absolute;
     right: 0px;
     width: 46px;
+
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-1 .discipline:hover .arrow {
+    background-color: #e2e2e2;
 }
 
 @media screen and (max-width: 579px) {
@@ -1134,6 +1141,7 @@ body.mobile .overlay {
 
 .join-modal .gutter .modal form .step.step-2 .preview .text .social-links a {
     color: #0f6;
+    text-decoration: none;
 }
 
 .join-modal .gutter .modal form .step.step-2 .preview a.close-preview-button {
@@ -1345,6 +1353,7 @@ body.mobile .overlay {
 
 .join-modal .gutter .modal form .step.step-3 .preview .text .social-links a {
     color: #0f6;
+    text-decoration: none;
 }
 
 .join-modal .gutter .modal form .step.step-3 .fields {
@@ -1474,7 +1483,7 @@ body.mobile .overlay {
 }
 
 .join-modal .gutter .modal form .step.step-3 .fields .social-links .arrow {
-    background-color: #D8D8D8;
+    background-color: #d8d8d8;
     background-image: url("../images/downwards-arrow-dark.png");
     background-position: 12px 17px;
     background-repeat: no-repeat;
@@ -1483,6 +1492,13 @@ body.mobile .overlay {
     position: absolute;
     right: 0px;
     width: 46px;
+
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .social-links:hover .arrow {
+    background-color: #e2e2e2;
 }
 
 @media screen and (max-width: 579px) {
@@ -1500,6 +1516,100 @@ body.mobile .overlay {
     }
     
     .join-modal .gutter .modal form .step.step-3 .fields .label-mobile {
+        display: block;
+    }
+}
+
+.join-modal .gutter .modal form .step.step-4 {
+    height: 362px;
+    width: 217px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.join-modal .gutter .modal form .step.step-4 .label-desktop {
+    color: #bac0c4;
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 24px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-4 .label-mobile {
+    color: #bac0c4;
+    display: none;
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 24px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-4 .preview {
+    left: 0;
+    position: absolute;
+    width: 217px;
+    top: 8px;
+}
+
+.join-modal .gutter .modal form .step.step-4 .preview .label {
+    display: none;
+}
+
+.join-modal .gutter .modal form .step.step-4 .preview .image {
+    background-image: url('../images/the-creation-of-adam.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 280px;
+    position: absolute;
+    top: 46px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-4 .preview .text {
+    color: #fff;
+    font-size: 14px;
+    height: 280px;
+    line-height: 1.4;
+    padding: 18px 18px 18px 28px;
+    position: absolute;
+    text-align: left;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .982);
+    top: 46px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-4 .preview .text .name {
+    color: #00ff66;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.join-modal .gutter .modal form .step.step-4 .preview .text .social-links {
+    color: rgba(255, 255, 255, 0.4);
+    display: block;
+    font-size: 9px;
+    text-align: center;
+}
+
+.join-modal .gutter .modal form .step.step-4 .preview .text .social-links a {
+    color: #0f6;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 579px) {
+    .join-modal .gutter .modal form .step.step-4 .label-desktop {
+        display: none;
+    }
+
+    .join-modal .gutter .modal form .step.step-4 .label-mobile {
         display: block;
     }
 }
