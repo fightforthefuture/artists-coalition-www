@@ -92,13 +92,6 @@ var packery;
     if (state.isMobile) {
         document.body.classList.add('mobile');
     }
-
-    // DEBUG!
-    setTimeout(function() {
-        state.step = 1;
-        updateJoinModalStep();
-        modalShow('join-modal');
-    });
 })();
 
 
