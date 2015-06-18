@@ -315,6 +315,8 @@ body > section.artists #artists-view .artist {
     color: #fff;
     font-size: 14px;
     height: 280px;
+    line-height: 1.4;
+    overflow: auto;
     padding: 18px 18px 18px 28px;
     width: 217px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, .982);
@@ -323,6 +325,15 @@ body > section.artists #artists-view .artist .name {
     color: #00ff66;
     font-weight: bold;
     text-decoration: none;
+}
+body > section.artists #artists-view .artist .social-links {
+    color: rgba(255, 255, 255, 0.4);
+    display: block;
+    font-size: 11px;
+    text-align: center;
+}
+body > section.artists #artists-view .artist .social-links a {
+    color: #0f6;
 }
 body > section.join-us {
     background-color: #222227;
@@ -622,6 +633,50 @@ body.mobile .overlay {
 }
 
 .categories-modal .gutter .modal .options .option:first-of-type {
+    border-top: 1px solid rgba(0, 0, 0, 0.117);
+}
+
+.social-links-modal .gutter .modal {
+    background-color: #6871a8;
+    max-width: 320px;
+}
+
+.social-links-modal .gutter .modal .options {
+    padding: 0 0 24px;
+    text-align: left;
+}
+
+.social-links-modal .gutter .modal .options .option {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.117);
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 8px 32px;
+    text-transform: uppercase;
+
+    -webkit-transition: all 0.129s;
+            transition: all 0.129s;
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+.social-links-modal .gutter .modal .options .option.disabled {
+    display: none;
+}
+
+.social-links-modal .gutter .modal .options .option:hover {
+    background-color: #6871a8;
+    color: #fff;
+    text-indent: 8px;
+}
+
+.social-links-modal .gutter .modal .options .option:first-of-type {
     border-top: 1px solid rgba(0, 0, 0, 0.117);
 }
 
@@ -1070,6 +1125,17 @@ body.mobile .overlay {
     text-decoration: none;
 }
 
+.join-modal .gutter .modal form .step.step-2 .preview .text .social-links {
+    color: rgba(255, 255, 255, 0.4);
+    display: block;
+    font-size: 9px;
+    text-align: center;
+}
+
+.join-modal .gutter .modal form .step.step-2 .preview .text .social-links a {
+    color: #0f6;
+}
+
 .join-modal .gutter .modal form .step.step-2 .preview a.close-preview-button {
     background-color: #cacde1;
     border-radius: 3px;
@@ -1270,6 +1336,17 @@ body.mobile .overlay {
     text-decoration: none;
 }
 
+.join-modal .gutter .modal form .step.step-3 .preview .text .social-links {
+    color: rgba(255, 255, 255, 0.4);
+    display: block;
+    font-size: 9px;
+    text-align: center;
+}
+
+.join-modal .gutter .modal form .step.step-3 .preview .text .social-links a {
+    color: #0f6;
+}
+
 .join-modal .gutter .modal form .step.step-3 .fields {
     position: absolute;
     right: 0;
@@ -1344,7 +1421,7 @@ body.mobile .overlay {
             transition: background-color 0.3s, border 0.3s;
 }
 
-.join-modal .gutter .modal form .step.step-3 .social-links {
+.join-modal .gutter .modal form .step.step-3 .fields .social-links {
     border-radius: 5px;
     border: 1px solid #c4c4c4;
     color: #7f7f7f;
@@ -1354,14 +1431,30 @@ body.mobile .overlay {
     line-height: 46px;
     position: absolute;
     right: 0;
-    top: 226px;
+    top: 0;
     width: 235px;
 
     -webkit-transition: background-color 0.3s, border 0.3s;
             transition: background-color 0.3s, border 0.3s;
 }
 
-.join-modal .gutter .modal form .step.step-3 .social-links .label {
+.join-modal .gutter .modal form .step.step-3 .fields .social-links[data-phase="1"] {
+    top: 66px;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .social-links[data-phase="2"] {
+    top: 152px;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .social-links[data-phase="3"] {
+    top: 226px;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .social-links[data-phase="4"] {
+    display: none;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .social-links .label {
     background-color: #fff;
     border-radius: 4px 0 0 4px;
     height: 44px;
@@ -1376,11 +1469,11 @@ body.mobile .overlay {
             transition: background-color 0.3s;
 }
 
-.join-modal .gutter .modal form .step.step-3 .social-links.error .label {
+.join-modal .gutter .modal form .step.step-3 .fields .social-links.error .label {
     background-color: #fff1f1 !important;
 }
 
-.join-modal .gutter .modal form .step.step-3 .social-links .arrow {
+.join-modal .gutter .modal form .step.step-3 .fields .social-links .arrow {
     background-color: #D8D8D8;
     background-image: url("../images/downwards-arrow-dark.png");
     background-position: 12px 17px;

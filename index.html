@@ -171,6 +171,7 @@
                         <div class="text">
                             <a class="name" target="_blank" href="#">Artist Name</a>
                             <span class="biography">...</span>
+                            <div class="social-links"></div>
                         </div>
                     </div>
 
@@ -198,6 +199,7 @@
                         <div class="text">
                             <a class="name" target="_blank" href="#">Artist Name</a>
                             <span class="biography">...</span>
+                            <div class="social-links"></div>
                         </div>
                     </div>
 
@@ -205,22 +207,7 @@
                         <div class="label-desktop">Add up to three social links:</div>
                         <div class="label-mobile">Add social links:</div>
 
-                        <div class="text-field number-1">
-                            <div class="label">Twitter:</div>
-                            <input>
-                        </div>
-
-                        <div class="text-field number-2">
-                            <div class="label">Facebook:</div>
-                            <input>
-                        </div>
-
-                        <!-- <div class="text-field number-3">
-                            <div class="label">Tumblr:</div>
-                            <input>
-                        </div> -->
-
-                        <div class="social-links">
+                        <div class="social-links" data-phase="1">
                             <div class="label">Add social link</div>
                             <div class="arrow"></div>
                         </div>
@@ -252,10 +239,36 @@
     </div>
 </div>
 
+<div class="overlay social-links-modal invisible" id="social-links-modal">
+    <div class="gutter">
+        <div class="modal">
+            <a class="close" href="#">×</a>
+            <h1>Social Websites</h1>
+            <div class="options">
+                <div class="option" data-id="facebook">
+                    Facebook
+                </div>
+                <div class="option" data-id="twitter">
+                    Twitter
+                </div>
+                <div class="option" data-id="tumblr">
+                    Tumblr
+                </div>
+                <div class="option" data-id="bandcamp">
+                    Bandcamp
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="template" id="template:artist">
 <div class="artist" style="background-image: url(<%= photo_url || 'images/the-creation-of-adam.jpg' %>)">
 <a class="name" href="<%= url || '#' %>" target="_blank"><%= name %></a>
 <span class="biography"><%= biography %></span>
+<div class="social-links">
+<%= socialHTML %>
+</div>
 </div>
 </script>
 
@@ -265,6 +278,13 @@
         <%= c.name %>
     </div>
 <% }) %>
+</script>
+
+<script type="template" id="template:social-link">
+<div class="text-field number-<%= number %>">
+    <div class="label"><%= name %>:</div>
+    <input class="social-link" data-id="<%= id %>">
+</div>
 </script>
 
 <script src="js/vendor/lodash.min.js"></script>

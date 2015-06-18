@@ -49,17 +49,22 @@ var ajax = {
 // Application globals.
 var state = {
     aModalIsShowing: false,
+    bandcamp: '',
     biography: '',
     category: null,
     discipline: null,
     email: '',
+    facebook: '',
     imageBase64: null,
     imageFile: null,
     isMobile: /mobile/i.test(navigator.userAgent),
     isPreviewingForMobile: false,
     name: '',
     showingModals: {},
+    socialLinkCount: 0,
     step: 1,
+    tumblr: '',
+    twitter: '',
 };
 var MAX_BIOGRAPHY_LENGTH = 256;
 var packery;
@@ -135,6 +140,8 @@ function loadArtistsFromDB(params) {
             if (!/^https?:\/\//.test(artistData.url)) {
                 artistData.url = 'http://' + artistData.url;
             }
+
+            artistData.socialHTML = generateSocialLinksHTML(artistData);
 
             container.innerHTML = artistTemplate(artistData);
             element = container.firstElementChild
@@ -326,7 +333,7 @@ var validateStep = {
         var biographyField = document.querySelector('#join-modal-form .step-2 textarea.biography');
         var biography = biographyField.value;
         if (!biography) {
-            alert('Please write a biography.');
+            alert('Please write a description.');
             biographyField.classList.add('error');
             biographyField.focus();
             return false;
@@ -459,6 +466,110 @@ function setupJoinModal() {
         state.isPreviewingForMobile = false;
         formStepTwo.classList.remove('previewing');
     }, false);
+
+    var socialLinksButton = document.querySelector('#join-modal-form .step-3 .fields .social-links');
+    socialLinksButton.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        if (state.socialLinkCount === 3) return;
+
+        modalShow('social-links-modal');
+    }, false);
+
+    var socialLinkTemplate = _.template(document.getElementById('template:social-link').innerHTML);
+    document.querySelector('#social-links-modal .options').addEventListener('click', function(e) {
+        if (!e.target.classList.contains('option')) return;
+        if (e.target.classList.contains('disabled')) return;
+
+        state.socialLinkCount++;
+
+        var id = e.target.getAttribute('data-id');
+        var name = e.target.textContent.trim();
+
+        var div = document.createElement('div');
+        var html = socialLinkTemplate({
+            id: id,
+            name: name,
+            number: state.socialLinkCount,
+        });
+        div.innerHTML = html;
+
+        var container = document.querySelector('#join-modal-form .step-3 .fields');
+        container.appendChild(div);
+
+        socialLinksButton.setAttribute('data-phase', state.socialLinkCount + 1);
+
+        modalHide('social-links-modal');
+        
+        // Hide option
+        setTimeout(function() {
+            e.target.classList.add('disabled');
+        }, 400);
+    }, false);
+
+    var socialLinkFields = document.querySelector('#join-modal-form .step-3 .fields');
+    socialLinkFields.addEventListener('blur', onSocialLinkFieldChange, false);
+    socialLinkFields.addEventListener('keyup', onSocialLinkFieldChange, false);
+    var socialLinksPreview = document.querySelector('#join-modal-form .step-3 .preview .social-links');
+    function onSocialLinkFieldChange(e) {
+        var el = e.target;
+        
+        if (!el.classList.contains('social-link')) return;
+
+        var id = el.getAttribute('data-id');
+        state[id] = el.value.trim();
+
+        var html = generateSocialLinksHTML(state);
+        socialLinksPreview.innerHTML = html;
+    }
+}
+
+var allowedSocialKeys = {
+    'bandcamp': {
+        name: 'Bandcamp',
+        template: 'https://@.bandcamp.com',
+    },
+    'facebook': {
+        name: 'Facebook',
+        template: 'https://www.facebook.com/@',
+    },
+    'tumblr': {
+        name: 'Tumblr',
+        template: 'http://@.tumblr.com',
+    },
+    'twitter': {
+        name: 'Twitter',
+        template: 'https://twitter.com/@',
+    },
+};
+function generateSocialLinksHTML(obj) {
+    var count = 0;
+    var html = '';
+
+    _.each(allowedSocialKeys, function(socialSite, key) {
+        if (!obj[key]) return;
+
+        count++;
+
+        if (count > 3) return;
+
+        if (count > 1) {
+            html += ' | ';
+        }
+
+        var url = obj[key];
+        if (!/^https?:\/\//.test(url)) {
+            if (url.match(key + '\.com')) {
+                url = 'http://' + url;
+            } else {
+                url = socialSite.template.replace('@', url);
+            }
+        }
+
+        html += '<a class="social-link" href="' + url + '" target="_blank">' + socialSite.name + '</a>';
+    });
+
+    return html;
 }
 
 function onImageChange() {
