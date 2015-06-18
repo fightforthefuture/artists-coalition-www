@@ -1215,6 +1215,202 @@ body.mobile .overlay {
     }
 }
 
+.join-modal .gutter .modal form .step.step-3 {
+    height: 312px;
+    margin: 0 auto;
+    position: relative;
+    width: 450px;
+}
+
+.join-modal .gutter .modal form .step.step-3 .preview {
+    left: 0;
+    position: absolute;
+    width: 174px;
+    top: 0;
+}
+
+.join-modal .gutter .modal form .step.step-3 .preview .label {
+    color: #bac0c4;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 16px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-3 .preview .image {
+    background-image: url('../images/the-creation-of-adam.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 238px;
+    position: absolute;
+    top: 46px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-3 .preview .text {
+    color: #fff;
+    font-size: 11px;
+    height: 238px;
+    padding: 16px 16px 16px 24px;
+    position: absolute;
+    text-align: left;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .982);
+    top: 46px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-3 .preview .text .name {
+    color: #00ff66;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 235px;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .label-desktop {
+    border-bottom: 1px solid #d2d2d2;
+    color: #bac0c4;
+    font-size: 14px;
+    font-weight: bold;
+    left: 0;
+    padding: 0 0 0 2px;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    top: 16px;
+    width: 232px;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .label-mobile {
+    color: #bac0c4;
+    display: none;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 16px;
+    width: 100%;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .text-field {
+    position: absolute;
+    right: 0;
+    top: 66px;
+    width: 235px;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .text-field.number-2 {
+    top: 138px;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .text-field.number-3 {
+    top: 210px;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .text-field .label {
+    color: #7f7f7f;
+    font-size: 13px;
+    left: 2px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .text-field input {
+    border-radius: 5px;
+    border: 1px solid #e1e1e1;
+    color: #7f7f7f;
+    font-size: 16px;
+    height: 46px;
+    left: 0;
+    line-height: 46px;
+    padding: 0 18px;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+
+    -webkit-transition: background-color 0.3s, border 0.3s;
+            transition: background-color 0.3s, border 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-3 .social-links {
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+    color: #7f7f7f;
+    cursor: pointer;
+    font-size: 16px;
+    height: 46px;
+    line-height: 46px;
+    position: absolute;
+    right: 0;
+    top: 226px;
+    width: 235px;
+
+    -webkit-transition: background-color 0.3s, border 0.3s;
+            transition: background-color 0.3s, border 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-3 .social-links .label {
+    background-color: #fff;
+    border-radius: 4px 0 0 4px;
+    height: 44px;
+    line-height: 42px;
+    padding: 0 0 0 20px;
+    text-align: left;
+    text-transform: uppercase;
+    position: absolute;
+    width: 187px;
+
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-3 .social-links.error .label {
+    background-color: #fff1f1 !important;
+}
+
+.join-modal .gutter .modal form .step.step-3 .social-links .arrow {
+    background-color: #D8D8D8;
+    background-image: url("../images/downwards-arrow-dark.png");
+    background-position: 12px 17px;
+    background-repeat: no-repeat;
+    border-radius: 0px 4px 4px 0px;
+    height: 44px;
+    position: absolute;
+    right: 0px;
+    width: 46px;
+}
+
+@media screen and (max-width: 579px) {
+    .join-modal .gutter .modal form .step.step-3 {
+        height: 294px;
+        width: 235px;
+    }
+
+    .join-modal .gutter .modal form .step.step-3 .preview {
+        display: none;
+    }
+    
+    .join-modal .gutter .modal form .step.step-3 .fields .label-desktop {
+        display: none;
+    }
+    
+    .join-modal .gutter .modal form .step.step-3 .fields .label-mobile {
+        display: block;
+    }
+}
+
 /* IE */
 :-ms-input-placeholder {  
    opacity: 0.5;

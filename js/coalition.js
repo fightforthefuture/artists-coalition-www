@@ -90,7 +90,7 @@ var packery;
 
     // DEBUG!
     setTimeout(function() {
-        state.step = 2;
+        state.step = 3;
         updateJoinModalStep();
         modalShow('join-modal');
     });
@@ -263,6 +263,18 @@ var prepareStep = {
         var count = document.querySelector('#join-modal-form .step-2 .limit .amount');
         count.textContent = MAX_BIOGRAPHY_LENGTH - state.name.length;
     },
+
+    '3': function() {
+        var nameField = document.querySelector('#join-modal-form .step-3 .preview .name');
+        nameField.textContent = state.name;
+        nameField.href = state.website;
+
+        var previewImg = document.querySelector('#join-modal-form .step-3 .preview .image');
+        previewImg.style.backgroundImage = 'url(' + state.imageBase64 + ')';
+
+        var biographySpan = document.querySelector('#join-modal-form .step-3 .preview .biography');
+        biographySpan.textContent = state.biography;
+    },
 }
 
 var validateStep = {
@@ -296,7 +308,7 @@ var validateStep = {
         if (!/^https?:\/\//.test(website)) {
             website = 'http://' + website;
         }
-        
+
         state.website = website;
 
         var disciplinesButton = document.getElementById('disciplines-modal-button');
@@ -319,6 +331,8 @@ var validateStep = {
             biographyField.focus();
             return false;
         }
+
+        state.biography = biography.trim();
 
         return true;
     },
