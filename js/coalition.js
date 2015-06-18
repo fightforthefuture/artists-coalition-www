@@ -255,6 +255,7 @@ var prepareStep = {
     '2': function() {
         var nameField = document.querySelector('#join-modal-form .step-2 .preview .name');
         nameField.textContent = state.name;
+        nameField.href = state.website;
 
         var previewImg = document.querySelector('#join-modal-form .step-2 .preview .image');
         previewImg.style.backgroundImage = 'url(' + state.imageBase64 + ')';
@@ -292,6 +293,10 @@ var validateStep = {
             return false;
         }
 
+        if (!/^https?:\/\//.test(website)) {
+            website = 'http://' + website;
+        }
+        
         state.website = website;
 
         var disciplinesButton = document.getElementById('disciplines-modal-button');
