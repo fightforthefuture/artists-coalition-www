@@ -132,7 +132,7 @@ body > header .email-border .email .thanks-message {
 
     color: #fff;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 700;
     height: 100%;
     line-height: 50px;
     opacity: 0;
@@ -737,7 +737,7 @@ body.mobile .overlay {
     .join-modal .gutter .modal form .buttons .border {
         height: 2px;
         margin: 0 auto 16px;
-        width: 130px;
+        width: 220px;
     }
 
     .join-modal .gutter .modal form .buttons .n {
@@ -749,6 +749,11 @@ body.mobile .overlay {
         display: block;
         margin: 0 auto;
     }
+}
+
+.join-modal .gutter .modal form .error {
+    background-color: #fff1f1 !important;
+    border: 1px solid #eb7272 !important;
 }
 
 .join-modal .gutter .modal form .step.step-1 {
@@ -788,6 +793,9 @@ body.mobile .overlay {
          -moz-user-select: none;
           -ms-user-select: none;
               user-select: none;
+
+    -webkit-transition: background-color 0.3s, border 0.3s;
+            transition: background-color 0.3s, border 0.3s;
 }
 
 .join-modal .gutter .modal form .step.step-1 .upload-a-photo .cross {
@@ -870,7 +878,6 @@ body.mobile .overlay {
 }
 
 .join-modal .gutter .modal form .step.step-1 .upload-a-photo .uploaded-photo-preview {
-    /*background-color: #111;*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -913,8 +920,8 @@ body.mobile .overlay {
     right: 0;
     width: 235px;
 
-    -webkit-transition: border 0.3s;
-            transition: border 0.3s;
+    -webkit-transition: background-color 0.3s, border 0.3s;
+            transition: background-color 0.3s, border 0.3s;
 }
 
 .join-modal .gutter .modal form .step.step-1 .text-field:hover,
@@ -942,13 +949,9 @@ body.mobile .overlay {
     right: 0;
     top: 166px;
     width: 235px;
-}
 
-.join-modal .gutter .modal form .step.step-1 .upload-a-photo.error,
-.join-modal .gutter .modal form .step.step-1 .text-field.error,
-.join-modal .gutter .modal form .step.step-1 .discipline.error {
-    background-color: #fff1f1;
-    border: 1px solid #eb7272;
+    -webkit-transition: background-color 0.3s, border 0.3s;
+            transition: background-color 0.3s, border 0.3s;
 }
 
 .join-modal .gutter .modal form .step.step-1 .discipline .label {
@@ -961,6 +964,13 @@ body.mobile .overlay {
     text-transform: uppercase;
     position: absolute;
     width: 187px;
+
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-1 .discipline.error .label {
+    background-color: #fff1f1 !important;
 }
 
 .join-modal .gutter .modal form .step.step-1 .discipline .arrow {
@@ -1032,6 +1042,7 @@ body.mobile .overlay {
 
 .join-modal .gutter .modal form .step.step-2 .preview .image {
     background-image: url('../images/the-creation-of-adam.jpg');
+    background-position: center;
     background-size: cover;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.4);
@@ -1059,11 +1070,46 @@ body.mobile .overlay {
     text-decoration: none;
 }
 
+.join-modal .gutter .modal form .step.step-2 .preview a.close-preview-button {
+    background-color: #cacde1;
+    border-radius: 3px;
+    color: #787b93;
+    display: none;
+    font-size: 12px;
+    font-weight: 700;
+    left: 16px;
+    line-height: 30px;
+    position: absolute;
+    text-decoration: none;
+    text-transform: uppercase;
+    top: 0;
+    width: 142px;
+
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-2 .preview a.close-preview-button:hover {
+    background-color: #d5d7e8;
+}
+
 .join-modal .gutter .modal form .step.step-2 .fields {
     position: absolute;
     right: 0;
     top: 0;
     width: 235px;
+}
+
+.join-modal .gutter .modal form .step.step-2 .fields .label {
+    color: #bac0c4;
+    display: none;
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 20px;
+    width: 100%;
 }
 
 .join-modal .gutter .modal form .step.step-2 .fields .limit {
@@ -1090,6 +1136,32 @@ body.mobile .overlay {
     resize: none;
     top: 45px;
     width: 100%;
+
+    -webkit-transition: background-color 0.3s, border 0.3s;
+            transition: background-color 0.3s, border 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-2 .fields a.preview-button {
+    background-color: #cacde1;
+    border-radius: 3px;
+    color: #787b93;
+    display: none;
+    font-size: 12px;
+    font-weight: 700;
+    left: 46px;
+    line-height: 30px;
+    position: absolute;
+    text-decoration: none;
+    text-transform: uppercase;
+    top: 258px;
+    width: 142px;
+
+    -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-2 .fields a.preview-button:hover {
+    background-color: #d5d7e8;
 }
 
 @media screen and (max-width: 579px) {
@@ -1100,6 +1172,46 @@ body.mobile .overlay {
 
     .join-modal .gutter .modal form .step.step-2 .preview {
         display: none;
+        left: 30px;
+        top: 0;
+        z-index: 1;
+    }
+
+    .join-modal .gutter .modal form .step.step-2.previewing .preview {
+        top: 16px;
+        display: block;
+    }
+
+    .join-modal .gutter .modal form .step.step-2.previewing .preview .close-preview-button {
+        display: block;
+    }
+
+    .join-modal .gutter .modal form .step.step-2.previewing .fields {
+        display: none;
+    }
+
+    .join-modal .gutter .modal form .step.step-2 .preview .label {
+        display: none;
+    }
+
+    .join-modal .gutter .modal form .step.step-2 .fields .label {
+        display: block;
+    }
+
+    .join-modal .gutter .modal form .step.step-2 .fields .limit {
+        left: 4px;
+        right: auto;
+        text-align: left;
+        top: 308px;
+    }
+
+    .join-modal .gutter .modal form .step.step-2 .fields textarea.biography {
+        padding: 16px 18px 58px;
+        top: 64px;
+    }
+
+    .join-modal .gutter .modal form .step.step-2 .fields a.preview-button {
+        display: block;
     }
 }
 

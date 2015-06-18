@@ -49,14 +49,19 @@ var ajax = {
 // Application globals.
 var state = {
     aModalIsShowing: false,
+    biography: '',
     category: null,
     discipline: null,
     email: '',
+    imageBase64: null,
     imageFile: null,
     isMobile: /mobile/i.test(navigator.userAgent),
-    step: 1,
+    isPreviewingForMobile: false,
+    name: '',
     showingModals: {},
+    step: 1,
 };
+var MAX_BIOGRAPHY_LENGTH = 256;
 var packery;
 
 
@@ -246,6 +251,19 @@ function setupCategoriesModal() {
     });
 }
 
+var prepareStep = {
+    '2': function() {
+        var nameField = document.querySelector('#join-modal-form .step-2 .preview .name');
+        nameField.textContent = state.name;
+
+        var previewImg = document.querySelector('#join-modal-form .step-2 .preview .image');
+        previewImg.style.backgroundImage = 'url(' + state.imageBase64 + ')';
+
+        var count = document.querySelector('#join-modal-form .step-2 .limit .amount');
+        count.textContent = MAX_BIOGRAPHY_LENGTH - state.name.length;
+    },
+}
+
 var validateStep = {
     '1': function() {
         if (!state.imageFile) {
@@ -262,6 +280,8 @@ var validateStep = {
             nameField.focus();
             return false;
         }
+
+        state.name = name;
         
         var websiteField = document.getElementById('your-website-field');
         var website = websiteField.value;
@@ -272,11 +292,26 @@ var validateStep = {
             return false;
         }
 
+        state.website = website;
+
         var disciplinesButton = document.getElementById('disciplines-modal-button');
         var discipline = state.discipline;
         if (!discipline) {
             alert('Please select a discipline.');
             disciplinesButton.classList.add('error');
+            return false;
+        }
+
+        return true;
+    },
+
+    '2': function() {
+        var biographyField = document.querySelector('#join-modal-form .step-2 textarea.biography');
+        var biography = biographyField.value;
+        if (!biography) {
+            alert('Please write a biography.');
+            biographyField.classList.add('error');
+            biographyField.focus();
             return false;
         }
 
@@ -362,25 +397,49 @@ function setupJoinModal() {
 
 
     var count = document.querySelector('#join-modal-form .step-2 .limit .amount');
-    var biographyTextArea = document.querySelector('#join-modal-form .step-2 textarea.biography');
+    var biographyField = document.querySelector('#join-modal-form .step-2 textarea.biography');
     var biographyPreview = document.querySelector('#join-modal-form .step-2 .preview .biography');
     var artistName = document.querySelector('#join-modal-form .step-2 .preview .name');
 
-    biographyTextArea.addEventListener('keyup', function(e) {
-        var maxLength = 320;
+    function onKeyUpBiography(e) {
         var nameLength = artistName.textContent.length;
-        var totalLength = nameLength + this.value.length;
+        var biographyLength = this.value.length;
+        var totalLength = nameLength + biographyLength;
 
-        if (totalLength > maxLength) {
-            biographyTextArea.value = biographyTextArea.value.substr(0, maxLength);
-            totalLength = maxLength;
+        if (totalLength > MAX_BIOGRAPHY_LENGTH) {
+            biographyField.value = biographyField.value.substr(0, MAX_BIOGRAPHY_LENGTH);
+            totalLength = MAX_BIOGRAPHY_LENGTH;
         }
 
-        biographyPreview.textContent = biographyTextArea.value;
+        if (biographyLength === 0) {
+            biographyPreview.textContent = '...';
+            biographyField.classList.add('error');
+        } else {
+            biographyPreview.textContent = biographyField.value;
+            biographyField.classList.remove('error');
+        }
 
-        var remaining = maxLength - totalLength;
+        var remaining = MAX_BIOGRAPHY_LENGTH - totalLength;
         count.textContent = remaining;
-    });
+    }
+    biographyField.addEventListener('blur', onKeyUpBiography);
+    biographyField.addEventListener('keyup', onKeyUpBiography);
+
+    var formStepTwo = document.querySelector('#join-modal-form .step-2');
+    var previewButton = document.querySelector('#join-modal-form .step-2 .fields .preview-button');
+    previewButton.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        state.isPreviewingForMobile = true;
+        formStepTwo.classList.add('previewing');
+    }, false);
+    var closePreviewButton = document.querySelector('#join-modal-form .step-2 .preview .close-preview-button');
+    closePreviewButton.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        state.isPreviewingForMobile = false;
+        formStepTwo.classList.remove('previewing');
+    }, false);
 }
 
 function onImageChange() {
@@ -411,6 +470,7 @@ function onImageChange() {
             uploadButton.classList.add('selected');
             uploadButton.classList.remove('error');
             state.imageFile = file;
+            state.imageBase64 = reader.result;
         } else {
             uploadButton.classList.remove('selected');
             uploadButton.classList.add('error');
@@ -443,6 +503,10 @@ function updateJoinModalStep() {
     var labels = document.querySelectorAll('#join-modal .path .step');
     _.each(labels, function(label, i) {
         if (state.step === i + 1) {
+            if (prepareStep[state.step]) {
+                prepareStep[state.step]();
+            }
+
             label.classList.add('selected');
         } else {
             label.classList.remove('selected');
