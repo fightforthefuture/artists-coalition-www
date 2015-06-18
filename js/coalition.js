@@ -66,7 +66,7 @@ var state = {
     tumblr: '',
     twitter: '',
 };
-var MAX_BIOGRAPHY_LENGTH = 256;
+var MAX_BIOGRAPHY_LENGTH = 250;
 var packery;
 
 
@@ -677,6 +677,8 @@ function updateJoinModalStep() {
             form.style.display = 'none';
         }
     });
+
+    document.querySelector('#join-modal .modal').scrollTop = 0;
 }
 
 function respondToResizes() {
