@@ -458,6 +458,8 @@ function setupJoinModal() {
 
         state.isPreviewingForMobile = true;
         formStepTwo.classList.add('previewing');
+        
+        document.querySelector('#join-modal .modal').scrollTop = 0;
     }, false);
     var closePreviewButton = document.querySelector('#join-modal-form .step-2 .preview .close-preview-button');
     closePreviewButton.addEventListener('click', function(e) {
