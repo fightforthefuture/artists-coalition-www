@@ -81,6 +81,8 @@ var packery;
     setupCategoriesModal();
     setupJoinModal();
 
+    addArtistPointerEvents();
+
     loadArtistsFromDB({
         category: state.category,
         page: 1,
@@ -93,6 +95,17 @@ var packery;
         document.body.classList.add('mobile');
     }
 })();
+
+
+
+function addArtistPointerEvents() {
+    var artistsView = document.getElementById('artists-view');
+    artistsView.addEventListener('mouseout', function(e) {
+        if (e.target.classList.contains('text')) {
+            e.target.scrollTo(0, 0);
+        }
+    }, false);
+}
 
 
 

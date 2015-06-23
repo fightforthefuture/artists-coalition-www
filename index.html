@@ -294,11 +294,14 @@
 
 <script type="template" id="template:artist">
 <div class="artist" style="background-image: url(<%= photo_url || 'images/the-creation-of-adam.jpg' %>)">
+<div class="text">
 <a class="name" href="<%= url || '#' %>" target="_blank"><%= name %></a>
 <span class="biography"><%= biography %></span>
 <div class="social-links">
 <%= socialHTML %>
 </div>
+</div>
+<div class="shade"></div>
 </div>
 </script>
 

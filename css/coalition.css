@@ -316,10 +316,22 @@ body > section.artists #artists-view .artist {
     font-size: 14px;
     height: 280px;
     line-height: 1.4;
-    overflow: auto;
-    padding: 18px 18px 18px 28px;
+    overflow: hidden;
     width: 217px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, .982);
+}
+body > section.artists #artists-view .artist .text {
+    height: 280px;
+    overflow: hidden;
+    padding: 18px 18px 18px 28px;
+    position: absolute;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, .982);
+    
+    -webkit-transform: translate3d(0, 182px, 0);
+        -ms-transform: translate3d(0, 182px, 0);
+            transform: translate3d(0, 182px, 0);
+
+    -webkit-transition: -webkit-transform 0.3s;
+            transition: transform 0.3s;
 }
 body > section.artists #artists-view .artist .name {
     color: #00ff66;
@@ -331,9 +343,41 @@ body > section.artists #artists-view .artist .social-links {
     display: block;
     font-size: 11px;
     text-align: center;
+    padding: 0 0 8px;
 }
 body > section.artists #artists-view .artist .social-links a {
     color: #0f6;
+}
+body > section.artists #artists-view .artist .shade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 1;
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1)));
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    background-image: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    background-image: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+
+    -webkit-transition: opacity 0.3s, left 0s;
+            transition: opacity 0.3s, left 0s;
+}
+body > section.artists #artists-view .artist:hover .text {
+    overflow: auto;
+
+    -webkit-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+body > section.artists #artists-view .artist:hover .shade {
+    opacity: 0;
+    left: -99999px;
+
+    -webkit-transition: opacity 0.3s, left 0s 0.4s;
+            transition: opacity 0.3s, left 0s 0.4s;
 }
 body > section.join-us {
     background-color: #222227;
