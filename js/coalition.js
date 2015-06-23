@@ -285,6 +285,14 @@ function setupCategoriesModal() {
 }
 
 var prepareStep = {
+    '1': function() {
+        var emailField = document.getElementById('your-email-field');
+        if (state.email) {
+            emailField.value = state.email;
+            emailField.classList.remove('error');
+        }
+    },
+
     '2': function() {
         var nameField = document.querySelector('#join-modal-form .step-2 .preview .name');
         nameField.textContent = state.name;
@@ -323,6 +331,18 @@ var validateStep = {
             document.getElementById('upload-a-photo').classList.add('error');
             return false;
         }
+
+        var emailField = document.getElementById('your-email-field');
+        var email = emailField.value.trim();
+        var emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        if (!email || !emailRegex.test(email)) {
+            alert('Please enter your email.');
+            emailField.classList.add('error');
+            emailField.focus();
+            return false;
+        }
+
+        state.email = email;
 
         var nameField = document.getElementById('your-name-field');
         var name = nameField.value;
@@ -564,6 +584,7 @@ function sendSubmission() {
 
     var data = new FormData();
     data.append('name', state.name);
+    data.append('email', state.email);
     data.append('url', state.website);
     data.append('biography', state.biography);
     data.append('category_id', state.discipline);

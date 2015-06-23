@@ -321,6 +321,7 @@ body > section.artists #artists-view .artist {
 }
 body > section.artists #artists-view .artist .text {
     background-color: rgba(0, 0, 0, 0);
+    border-radius: 5px;
     height: 280px;
     overflow: hidden;
     padding: 18px 18px 18px 28px;
@@ -345,7 +346,6 @@ body > section.artists #artists-view .artist .social-links {
     display: block;
     font-size: 11px;
     text-align: center;
-    padding: 0 0 8px;
 }
 body > section.artists #artists-view .artist .social-links a {
     color: #0f6;
@@ -889,7 +889,7 @@ body.mobile .overlay {
 }
 
 .join-modal .gutter .modal form .step.step-1 {
-    height: 252px;
+    height: 302px;
     margin: 0 auto;
     position: relative;
     width: 484px;
@@ -912,7 +912,7 @@ body.mobile .overlay {
     border-radius: 5px;
     border: 1px solid #e1e1e1;
     cursor: pointer;
-    height: 168px;
+    height: 226px;
     left: 0;
     position: absolute;
     text-align: left;
@@ -942,7 +942,7 @@ body.mobile .overlay {
     height: 52px;
     left: 112px;
     position: absolute;
-    top: 25px;
+    top: 55px;
     width: 2px;
 }
 
@@ -953,7 +953,7 @@ body.mobile .overlay {
     height: 2px;
     left: 86px;
     position: absolute;
-    top: 50px;
+    top: 80px;
     width: 52px;
 }
 
@@ -1061,12 +1061,16 @@ body.mobile .overlay {
     border: 1px solid #c6c6c6;
 }
 
-.join-modal .gutter .modal form .step.step-1 .text-field.your-name {
+.join-modal .gutter .modal form .step.step-1 .text-field.your-email {
     top: 46px;
 }
 
-.join-modal .gutter .modal form .step.step-1 .text-field.your-website {
+.join-modal .gutter .modal form .step.step-1 .text-field.your-name {
     top: 106px;
+}
+
+.join-modal .gutter .modal form .step.step-1 .text-field.your-website {
+    top: 166px;
 }
 
 .join-modal .gutter .modal form .step.step-1 .discipline {
@@ -1079,7 +1083,7 @@ body.mobile .overlay {
     line-height: 46px;
     position: absolute;
     right: 0;
-    top: 166px;
+    top: 226px;
     width: 235px;
 
     -webkit-transition: background-color 0.3s, border 0.3s;
@@ -1126,7 +1130,7 @@ body.mobile .overlay {
 
 @media screen and (max-width: 579px) {
     .join-modal .gutter .modal form .step.step-1 {
-        height: 406px;
+        height: 522px;
         width: 226px;
     }
 
@@ -1138,18 +1142,23 @@ body.mobile .overlay {
         top: 48px;
     }
 
-    .join-modal .gutter .modal form .step.step-1 .text-field.your-name {
-        top: 232px;
-        width: 226px;
-    }
-
-    .join-modal .gutter .modal form .step.step-1 .text-field.your-website {
+    .join-modal .gutter .modal form .step.step-1 .text-field.your-email {
         top: 290px;
         width: 226px;
     }
 
+    .join-modal .gutter .modal form .step.step-1 .text-field.your-name {
+        top: 348px;
+        width: 226px;
+    }
+
+    .join-modal .gutter .modal form .step.step-1 .text-field.your-website {
+        top: 404px;
+        width: 226px;
+    }
+
     .join-modal .gutter .modal form .step.step-1 .discipline {
-        top: 346px;
+        top: 460px;
         width: 226px;
     }
 }
