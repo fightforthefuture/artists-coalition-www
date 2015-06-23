@@ -63,7 +63,7 @@ body > header {
 body > header h1 {
     color: #f9f7ef;
     font-family: 'Raleway Web';
-    font-family: 62px;
+    font-size: 48px;
     padding: 90px 0 16px;
 }
 body > header h3 {
@@ -188,6 +188,10 @@ body > header .disclaimer a.privacy {
 }
 /* Responsive styles for header */
 @media screen and (max-width: 650px) {
+    body > header h1 {
+        font-size: 36px;
+    }
+
     body > header .email-border {
         border-radius: 4px;
         width: 100%;
