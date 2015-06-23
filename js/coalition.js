@@ -97,14 +97,34 @@ var packery;
 })();
 
 
+function findElementContainer(el, className) {
+    while (el && el.classList) {
+        if (el.classList.contains(className)) {
+            break;
+        }
+
+        el = el.parentNode;
+    }
+
+    return el;
+}
 
 function addArtistPointerEvents() {
     var artistsView = document.getElementById('artists-view');
     artistsView.addEventListener('mouseout', function(e) {
-        if (e.target.classList.contains('text')) {
-            e.target.scrollTo(0, 0);
+        var fromArtist = findElementContainer(e.target, 'artist');
+        var toArtist = findElementContainer(e.relatedTarget, 'artist');
+
+        if (!fromArtist || !toArtist) {
+            return;
         }
-    }, false);
+
+        if (fromArtist === toArtist) {
+            return;
+        }
+
+        fromArtist.querySelector('.text').scrollTop = 0;
+    }, true);
 }
 
 
