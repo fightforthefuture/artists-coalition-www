@@ -371,7 +371,7 @@ body > section.artists #artists-view .artist .shade {
             transition: opacity 0.3s, left 0s;
 }
 body > section.artists #artists-view .artist:hover .text {
-    background-color: rgba(0, 0, 0, 0.267);
+    background-color: rgba(0, 0, 0, 0.673);
     overflow: auto;
 
     -webkit-transform: translate3d(0, 0, 0);
