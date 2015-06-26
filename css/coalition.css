@@ -174,7 +174,7 @@ body > header .email-border .email.thanks input {
 body > header .email-border .email.thanks .thanks-message {
     animation: thanksMessageSlide 0.3s 0.5s forwards;
     -webkit-animation: thanksMessageSlide 0.3s 0.5s forwards;
-    
+
     display: block;
 }
 body > header .disclaimer {
@@ -271,7 +271,7 @@ body > section.artists header .filter .dropdown .selected {
     line-height: 42px;
     padding: 0 10px 0 20px;
     text-transform: uppercase;
-    
+
     -webkit-transition: background-color 0.3s;
             transition: background-color 0.3s;
 }
@@ -493,6 +493,17 @@ body > section.join-us > .statement {
     max-width: 1112px;
     padding: 40px 45px;
     text-align: center;
+}
+body > section.contact {
+    background-color: #292933;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 32px;
+    font-size: 16px;
+    text-align: center;
+}
+body > section.contact a {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: bold;
 }
 body > footer {
     background-color: #19191b;
@@ -1637,11 +1648,11 @@ body.mobile .overlay {
     .join-modal .gutter .modal form .step.step-3 .preview {
         display: none;
     }
-    
+
     .join-modal .gutter .modal form .step.step-3 .fields .label-desktop {
         display: none;
     }
-    
+
     .join-modal .gutter .modal form .step.step-3 .fields .label-mobile {
         display: block;
     }
@@ -1742,7 +1753,7 @@ body.mobile .overlay {
 }
 
 /* IE */
-:-ms-input-placeholder {  
+:-ms-input-placeholder {
    opacity: 0.5;
 }
 
@@ -1774,7 +1785,7 @@ body.mobile .overlay {
         transform: scale(1);
         opacity: 1;
     }
-    
+
     to {
         transform: scale(0);
         opacity: 0;

@@ -234,7 +234,7 @@ function setupCategoriesModal() {
 
     categoriesOptions.addEventListener('click', function(e) {
         if (!e.target.classList.contains('option')) return;
-        
+
         var id = e.target.getAttribute('data-id');
         var name = e.target.textContent.trim();
 
@@ -256,7 +256,7 @@ function setupCategoriesModal() {
 
     disciplinesOptions.addEventListener('click', function(e) {
         if (!e.target.classList.contains('option')) return;
-        
+
         var id = e.target.getAttribute('data-id');
         var name = e.target.textContent.trim();
 
@@ -271,7 +271,7 @@ function setupCategoriesModal() {
     // Populate categories.
     ajax.get('https://coalition-api.herokuapp.com/categories', function(res) {
         var template = _.template(document.getElementById('template:categories').innerHTML);
-        
+
         var disciplines = JSON.parse(res);
         disciplinesOptions.innerHTML = template({ categories: disciplines });
 
@@ -354,7 +354,7 @@ var validateStep = {
         }
 
         state.name = name;
-        
+
         var websiteField = document.getElementById('your-website-field');
         var website = websiteField.value;
         if (!website) {
@@ -511,7 +511,7 @@ function setupJoinModal() {
 
         state.isPreviewingForMobile = true;
         formStepTwo.classList.add('previewing');
-        
+
         document.querySelector('#join-modal .modal').scrollTop = 0;
     }, false);
     var closePreviewButton = document.querySelector('#join-modal-form .step-2 .preview .close-preview-button');
@@ -555,7 +555,7 @@ function setupJoinModal() {
         socialLinksButton.setAttribute('data-phase', state.socialLinkCount + 1);
 
         modalHide('social-links-modal');
-        
+
         // Hide option
         setTimeout(function() {
             e.target.classList.add('disabled');
@@ -568,7 +568,7 @@ function setupJoinModal() {
     var socialLinksPreview = document.querySelector('#join-modal-form .step-3 .preview .social-links');
     function onSocialLinkFieldChange(e) {
         var el = e.target;
-        
+
         if (!el.classList.contains('social-link')) return;
 
         var id = el.getAttribute('data-id');
