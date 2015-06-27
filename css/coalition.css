@@ -550,6 +550,13 @@ body > section.core-values ul li {
     list-style: none;
     line-height: 1.8;
     padding: 0 0 16px;
+}
+body > section.core-values ul li,
+body > section.core-values ul li ul li {
+    cursor: default;
+}
+body > section.core-values ul li.expandable,
+body > section.core-values ul li ul li.expandable {
     cursor: pointer;
 }
 body > section.core-values ul li a {
