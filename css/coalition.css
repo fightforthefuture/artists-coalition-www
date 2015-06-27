@@ -525,6 +525,77 @@ body > section.join-us > .statement {
     padding: 40px 45px;
     text-align: center;
 }
+body > section.core-values {
+    padding: 75px 32px 32px;
+}
+body > section.core-values .arrow {
+    padding: 0 8px 0 0;
+    height: 13px;
+}
+body > section.core-values h3 {
+    color: #222;
+    font-size: 80px;
+    font-weight: 300;
+    margin: 0px 0px 48px;
+    text-align: center;
+}
+body > section.core-values ul {
+    padding: 32px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+body > section.core-values ul li {
+    color: #222;
+    font-size: 20px;
+    list-style: none;
+    line-height: 1.8;
+    padding: 0 0 16px;
+    cursor: pointer;
+}
+body > section.core-values ul li a {
+    color: #1fbf63;
+    font-weight: bold;
+
+    -webkit-transition: color 0.3s;
+            transition: color 0.3s;
+}
+body > section.core-values ul li a:hover {
+    color: #42D37D;
+}
+body > section.core-values ul li ul {
+    display: none;
+    padding: 16px 0 16px 32px;
+}
+body > section.core-values ul li ul li {
+    color: #555;
+    font-size: 16px;
+}
+body > section.core-values ul li ul li ul li {
+    font-size: 12px;
+}
+body > section.core-values ul li > .arrow {
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+            transition: opacity 0.3s, transform 0.3s;
+}
+body > section.core-values ul li > .arrow:hover {
+    opacity: 0.7;
+}
+body > section.core-values ul li.enabled > .arrow {
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+}
+body > section.core-values ul li.enabled > ul {
+    display: block;
+
+    animation: coreValueAnimation 0.427s forwards;
+    -webkit-animation: coreValueAnimation 0.427s forwards;
+}
+@media (max-width: 579px) {
+    body > section.core-values h3 {
+        font-size: 60px;
+    }
+}
 body > section.contact {
     background-color: #292933;
     color: rgba(255, 255, 255, 0.7);
@@ -1875,6 +1946,28 @@ body.mobile .overlay {
 
     to {
         -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes coreValueAnimation {
+    from {
+        transform: translate(30px, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes coreValueAnimation {
+    from {
+        -webkit-transform: translate(30px, 0);
+        opacity: 0;
+    }
+
+    to {
+        -webkit-transform: translate(0, 0);
         opacity: 1;
     }
 }

@@ -90,6 +90,8 @@ var packery;
         size: 16,
     });
 
+    setupCoreValues();
+
     respondToResizes();
 
     if (state.isMobile) {
@@ -881,4 +883,32 @@ function bindModalEvents(modal) {
 
         modalHide(modal.id);
     }.bind(this), false);
+}
+
+function walkUpFromElementToSelector(el, selector) {
+    var elements = document.querySelectorAll(selector);
+    while (el.parentNode) {
+        for (var i = 0; i < elements.length; i++) {
+            if (el === elements[i]) {
+                return el;
+            }
+        }
+
+        el = el.parentNode;
+    }
+
+    return null;
+}
+
+function setupCoreValues() {
+    document.querySelector('section.core-values').addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            return;
+        }
+
+        e.preventDefault();
+
+        var el = walkUpFromElementToSelector(e.target, 'section.core-values li');
+        el.classList.toggle('enabled');
+    }, false);
 }
