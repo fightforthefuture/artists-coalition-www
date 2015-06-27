@@ -204,6 +204,13 @@ function setupHeroForm() {
         data.append('tag', tag);
         data.append('org', 'fftf');
 
+        var nameElement = document.getElementById('hero-form-name');
+        var name = nameElement.value.trim();
+        if (!name) {
+            alert('Please enter a name.');
+            return nameElement.focus();
+        }
+
         var emailElement = document.getElementById('hero-form-email');
         var email = emailElement.value.trim();
         if (!email || !emailRegex.test(email)) {
@@ -211,8 +218,10 @@ function setupHeroForm() {
             return emailElement.focus();
         }
 
+        state.name = name;
         state.email = email;
 
+        data.append('member[first_name]', name);
         data.append('member[email]', email);
 
         ajax.post('https://queue.fightforthefuture.org/action', data);
@@ -291,6 +300,12 @@ var prepareStep = {
         if (state.email) {
             emailField.value = state.email;
             emailField.classList.remove('error');
+        }
+
+        var nameField = document.getElementById('your-name-field');
+        if (state.name) {
+            nameField.value = state.name;
+            nameField.classList.remove('error');
         }
     },
 
