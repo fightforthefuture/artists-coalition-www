@@ -1563,6 +1563,9 @@ body.mobile .overlay {
     right: 0;
     top: 66px;
     width: 235px;
+
+    -webkit-transition: top 0.3s;
+            transition: top 0.3s;
 }
 
 .join-modal .gutter .modal form .step.step-3 .fields .text-field.number-2 {
@@ -1580,6 +1583,26 @@ body.mobile .overlay {
     position: absolute;
     text-transform: uppercase;
     top: 0;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .text-field .x {
+    color: #aaa;
+    cursor: pointer;
+    font-size: 16px;
+    height: 42px;
+    line-height: 22px;
+    padding: 8px;
+    position: absolute;
+    right: 3px;
+    top: 22px;
+    z-index: 1;
+
+    -webkit-transition: color 0.3s;
+            transition: color 0.3s;
+}
+
+.join-modal .gutter .modal form .step.step-3 .fields .text-field .x:hover {
+    color: #888;
 }
 
 .join-modal .gutter .modal form .step.step-3 .fields .text-field input {
@@ -1612,8 +1635,8 @@ body.mobile .overlay {
     top: 0;
     width: 235px;
 
-    -webkit-transition: background-color 0.3s, border 0.3s;
-            transition: background-color 0.3s, border 0.3s;
+    -webkit-transition: background-color 0.3s, border 0.3s, top 0.3s;
+            transition: background-color 0.3s, border 0.3s, top 0.3s;
 }
 
 .join-modal .gutter .modal form .step.step-3 .fields .social-links[data-phase="1"] {

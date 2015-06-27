@@ -568,6 +568,31 @@ function setupJoinModal() {
         var container = document.querySelector('#join-modal-form .step-3 .fields');
         container.appendChild(div);
 
+        container.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            if (!e.target.classList.contains('x')) {
+                return;
+            }
+
+            var container = e.target.parentNode;
+            var field = container.querySelector('input');
+            var id = field.getAttribute('data-id');
+            state[id] = '';
+
+            container.parentNode.removeChild(container);
+
+            state.socialLinkCount--;
+            socialLinksButton.setAttribute('data-phase', state.socialLinkCount + 1);
+
+            _.each(document.querySelectorAll('#join-modal-form .step-3 .fields .text-field'), function(field, i) {
+                field.className = 'text-field number-' + (i + 1);
+            });
+
+            var option = document.querySelector('#social-links-modal .options [data-id="' + id + '"]');
+            option.classList.remove('disabled');
+        }, false);
+
         socialLinksButton.setAttribute('data-phase', state.socialLinkCount + 1);
 
         modalHide('social-links-modal');
