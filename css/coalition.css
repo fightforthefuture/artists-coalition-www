@@ -1934,7 +1934,7 @@ body.mobile .overlay {
     color: #42D37D;
 }
 
-@media (max-height: 630px), (max-width: 1450px) {
+@media (max-height: 630px), (max-width: 1680px) {
     .easel {
         opacity: 0;
         -webkit-transform: translate(-20px, 0) scale(0.218);
