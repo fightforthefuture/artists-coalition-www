@@ -60,6 +60,7 @@ var state = {
     isMobile: /mobile/i.test(navigator.userAgent),
     isPreviewingForMobile: false,
     name: '',
+    other: '',
     showingModals: {},
     socialLinkCount: 0,
     step: 1,
@@ -617,6 +618,10 @@ var allowedSocialKeys = {
         name: 'Twitter',
         template: 'https://twitter.com/@',
     },
+    'other': {
+        name: 'Other',
+        template: '@',
+    },
 };
 function generateSocialLinksHTML(obj) {
     var count = 0;
@@ -635,7 +640,7 @@ function generateSocialLinksHTML(obj) {
 
         var url = obj[key];
         if (!/^https?:\/\//.test(url)) {
-            if (url.match(key + '\.com')) {
+            if (key === 'other' || url.match(key + '\.com')) {
                 url = 'http://' + url;
             } else {
                 url = url.replace('@', '');
