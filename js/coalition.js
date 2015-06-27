@@ -106,7 +106,7 @@ function findElementContainer(el, className) {
             break;
         }
 
-        el = el.parentNode;
+        el = el.parentElement;
     }
 
     return el;
@@ -577,12 +577,12 @@ function setupJoinModal() {
                 return;
             }
 
-            var container = e.target.parentNode;
+            var container = e.target.parentElement;
             var field = container.querySelector('input');
             var id = field.getAttribute('data-id');
             state[id] = '';
 
-            container.parentNode.removeChild(container);
+            container.parentElement.removeChild(container);
 
             state.socialLinkCount--;
             socialLinksButton.setAttribute('data-phase', state.socialLinkCount + 1);
@@ -822,7 +822,7 @@ function respondToResizes() {
 function modalShow(id) {
     if (!state.aModalIsShowing) {
         state.aModalIsShowing = true;
-        state.scrollY = scrollY;
+        state.scrollY = document.body.scrollTop || window.scrollY;
     }
 
     state.showingModals[id] = true;
@@ -887,14 +887,14 @@ function bindModalEvents(modal) {
 
 function walkUpFromElementToSelector(el, selector) {
     var elements = document.querySelectorAll(selector);
-    while (el.parentNode) {
+    while (el.parentElement) {
         for (var i = 0; i < elements.length; i++) {
             if (el === elements[i]) {
                 return el;
             }
         }
 
-        el = el.parentNode;
+        el = el.parentElement;
     }
 
     return null;

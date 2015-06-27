@@ -1884,6 +1884,64 @@ body.mobile .overlay {
     }
 }
 
+.easel {
+    height: 300px;
+    left: 16px;
+    position: fixed;
+    top: calc(250px + (100% - 300px) / 2);
+    z-index: 9;
+
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+            transition: transform 0.3s, opacity 0.3s;
+}
+
+.easel img {
+    height: 210px;
+    position: absolute;
+    width: 140px;
+    z-index: 0;
+}
+
+.easel .text {
+    font-size: 10px;
+    height: 140px;
+    left: 8px;
+    position: absolute;
+    text-align: center;
+    top: 30px;
+    width: 122px;
+    z-index: 1;
+
+    -webkit-transform: rotate(-0.672deg);
+            transform: rotate(-0.672deg);
+}
+
+.easel .text h3 {
+    padding: 0 0 4px;
+}
+
+.easel .text a {
+    color: #1FBF63;
+    display: block;
+    font-weight: bold;
+    line-height: 1.6;
+
+    -webkit-transition: color 0.3s;
+            transition: color 0.3s;
+}
+
+.easel .text a:hover {
+    color: #42D37D;
+}
+
+@media (max-height: 630px), (max-width: 1450px) {
+    .easel {
+        opacity: 0;
+        -webkit-transform: translate(200px, 0) scale(0.218);
+                transform: translate(200px, 0) scale(0.218);
+    }
+}
+
 /* IE */
 :-ms-input-placeholder {
    opacity: 0.5;
