@@ -460,6 +460,26 @@ body > section.artists #artists-view .artist .tint {
 body > section.artists #artists-view .artist:hover .tint {
     opacity: 0.679;
 }
+body > section.artists .view-more {
+    background-color: #62C7DC;
+    border-radius: 26px;
+    border: medium none;
+    color: #FFF;
+    cursor: pointer;
+    font-family: "Open Sans Web",sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    height: 42px;
+    line-height: 40px;
+    margin: 32px auto 0;
+    opacity: 1;
+    text-align: center;
+    width: 170px;
+    transition: background-color 0.3s ease 0s, opacity 0.3s ease 0.1s;
+}
+body > section.artists .view-more:hover {
+    background-color: #11b9ff;
+}
 body > section.join-us {
     background-color: #222227;
     padding: 75px 16px;

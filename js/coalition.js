@@ -61,6 +61,8 @@ var state = {
     isPreviewingForMobile: false,
     name: '',
     other: '',
+    page: 1,
+    pageSize: 18,
     showingModals: {},
     socialLinkCount: 0,
     step: 1,
@@ -86,9 +88,12 @@ var packery;
 
     loadArtistsFromDB({
         category: state.category,
-        page: 1,
-        size: 16,
+        clear: true,
+        page: state.page,
+        size: state.pageSize,
     });
+
+    setupViewMore();
 
     setupCoreValues();
 
@@ -178,7 +183,9 @@ function loadArtistsFromDB(params) {
             fragment.appendChild(element);
         });
 
-        packery.remove(packery.getItemElements());
+        if (params.clear) {
+            packery.remove(packery.getItemElements());
+        }
 
         view.appendChild(fragment);
         packery.appended(elements);
@@ -189,6 +196,13 @@ function loadArtistsFromDB(params) {
             view.classList.add('nothing');
         } else {
             view.classList.remove('nothing');
+        }
+
+        var viewMore = document.querySelector('section.artists .view-more');
+        if (artistsData.length === state.pageSize) {
+            viewMore.style.display = 'block';
+        } else {
+            viewMore.style.display = 'none';
         }
     });
 }
@@ -259,10 +273,13 @@ function setupCategoriesModal() {
 
         modalHide('categories-modal');
 
+        state.page = 1;
+
         loadArtistsFromDB({
             category: state.category,
-            page: 1,
-            size: 16,
+            clear: true,
+            page: state.page,
+            size: state.pageSize,
         });
     }, false);
 
@@ -898,6 +915,24 @@ function walkUpFromElementToSelector(el, selector) {
     }
 
     return null;
+}
+
+function setupViewMore() {
+    var viewMore = document.querySelector('section.artists .view-more');
+    viewMore.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        state.page++;
+
+        loadArtistsFromDB({
+            category: state.category,
+            clear: false,
+            page: state.page,
+            size: state.pageSize,
+        });
+
+        viewMore.style.display = 'none';
+    }, false);
 }
 
 function setupCoreValues() {
