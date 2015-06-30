@@ -884,8 +884,11 @@ body.mobile .overlay {
 }
 
 .uploaded-modal .gutter .modal {
-    background-color: #6871a8;
     max-width: 320px;
+}
+
+.uploaded-modal .gutter .modal h1 {
+    background-color: #1FBF63;
 }
 
 .uploaded-modal .gutter .modal .description {
