@@ -201,6 +201,9 @@ function loadArtistsFromDB(params) {
             view.classList.remove('nothing');
         }
 
+        console.log(state.pageSize);
+        console.log(artistsData.length);
+
         var viewMore = document.querySelector('section.artists .view-more');
         if (artistsData.length === state.pageSize) {
             viewMore.style.display = 'block';
@@ -649,16 +652,19 @@ function sendSubmission() {
     modalShow('uploading-modal');
 
     var data = new FormData();
-    data.append('name', state.name);
-    data.append('email', state.email);
-    data.append('url', state.website);
+    data.append('bandcamp', state.bandcamp);
     data.append('biography', state.biography);
     data.append('category_id', state.discipline);
+    data.append('email', state.email);
     data.append('facebook', state.facebook);
-    data.append('twitter', state.twitter);
-    data.append('bandcamp', state.bandcamp);
-    data.append('tumblr', state.tumblr);
     data.append('image', state.imageFile);
+    data.append('instagram', state.instagram);
+    data.append('name', state.name);
+    data.append('other', state.other);
+    data.append('soundcloud', state.soundcloud);
+    data.append('tumblr', state.tumblr);
+    data.append('twitter', state.twitter);
+    data.append('url', state.website);
     ajax.post('https://coalition-api.herokuapp.com/artists/', data, function(res) {
         modalHide('uploading-modal');
         modalShow('uploaded-modal');
@@ -686,6 +692,14 @@ var allowedSocialKeys = {
     'other': {
         name: 'Other',
         template: '@',
+    },
+    'instagram': {
+        name: 'Instagram',
+        template: 'https://instagram.com/@',
+    },
+    'soundcloud': {
+        name: 'SoundCloud',
+        template: 'https://soundcloud.com/@',
     },
 };
 function generateSocialLinksHTML(obj) {
