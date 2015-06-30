@@ -72,6 +72,7 @@ var state = {
     twitter: '',
 };
 var MAX_BIOGRAPHY_LENGTH = 250;
+var MAX_FILE_UPLOAD_MB = 4;
 var packery;
 
 
@@ -730,28 +731,34 @@ function onImageChange() {
 
     var previewImg = document.getElementById('uploaded-photo-preview');
     reader.onloadend = function() {
+        var success = false;
+
         if (file.type === 'image/png' || file.type === 'image/jpeg') {
-            var image = new Image();
-            image.src = reader.result;
-            image.onload = function() {
-                previewImg.style.backgroundImage = 'url(' + reader.result + ')';
-                previewImg.style.display = 'block';
+            if (file.size / 1024 / 1024 < MAX_FILE_UPLOAD_MB) {
+                var image = new Image();
+                image.src = reader.result;
+                image.onload = function() {
+                    previewImg.style.backgroundImage = 'url(' + reader.result + ')';
+                    previewImg.style.display = 'block';
+                }
+                success = true;
+            } else {
+                alert('Please choose an image smaller than ' + MAX_FILE_UPLOAD_MB + ' megabytes.');
             }
         } else {
-            previewImg.style.display = 'none';
-            file = false;
+            alert('Please select a JPG or PNG image.');
         }
 
-        if (file) {
+        if (!success) {
+            previewImg.style.display = 'none';
+            uploadButton.classList.remove('selected');
+            uploadButton.classList.add('error');
+            state.imageFile = null;
+        } else {
             uploadButton.classList.add('selected');
             uploadButton.classList.remove('error');
             state.imageFile = file;
             state.imageBase64 = reader.result;
-        } else {
-            uploadButton.classList.remove('selected');
-            uploadButton.classList.add('error');
-            state.imageFile = null;
-            alert('Please select a JPG or PNG image.')
         }
     }
 

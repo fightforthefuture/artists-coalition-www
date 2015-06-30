@@ -1415,7 +1415,7 @@ body.mobile .overlay {
     color: rgba(255, 255, 255, 0.4);
     display: block;
     font-size: 8px;
-    text-align: center;
+    text-align: left;
 }
 
 .join-modal .gutter .modal form .step.step-2 .preview .text .social-links a {
@@ -1638,7 +1638,7 @@ body.mobile .overlay {
     color: rgba(255, 255, 255, 0.4);
     display: block;
     font-size: 8px;
-    text-align: center;
+    text-align: left;
 }
 
 .join-modal .gutter .modal form .step.step-3 .preview .text .social-links a {
@@ -1890,7 +1890,7 @@ body.mobile .overlay {
     background-color: #000;
     border-radius: 5px;
     height: 100%;
-    height: 238px;
+    height: 280px;
     opacity: 0.679;
     position: absolute;
     top: 46px;
@@ -1920,7 +1920,7 @@ body.mobile .overlay {
     color: rgba(255, 255, 255, 0.4);
     display: block;
     font-size: 9px;
-    text-align: center;
+    text-align: left;
 }
 
 .join-modal .gutter .modal form .step.step-4 .preview .text .social-links a {
