@@ -150,7 +150,7 @@ body > header .email-border .email button {
             transition: background-color 0.3s, opacity 0.3s 0.1s;
 }
 body > header .email-border .email button:hover {
-    background-color: #11b9ff;
+    background-color: #0be066;
 }
 body > header .email-border .email .thanks-message {
     display: none;
@@ -166,7 +166,7 @@ body > header .email-border .email .thanks-message {
     width: 100%;
 }
 body > header .email-border .email.thanks {
-    background-color: #62c7dc;
+    background-color: #1fb630;
 }
 body > header .email-border .email.thanks button {
     cursor: default;
@@ -500,7 +500,7 @@ body > section.join-us > h4 {
     max-width: 890px;
 }
 body > section.join-us > h4 strong {
-    border-bottom: 1px solid #1fbf63;
+    border-bottom: 1px solid #1fb630;
     font-weight: 600;
 }
 body > section.join-us > button.add-your-name {
@@ -581,7 +581,7 @@ body > section.core-values ul li ul li.expandable {
     cursor: pointer;
 }
 body > section.core-values ul li a {
-    color: #1fbf63;
+    color: #1fb630;
     font-weight: bold;
 
     -webkit-transition: color 0.3s;
@@ -691,7 +691,7 @@ body > footer .right .twitter img {
 
 /* Buttons */
 button.add-your-name {
-    background-color: #1fbf63;
+    background-color: #1fb630;
     background-image: url(../images/plus.png);
     background-position: 14px 13px;
     background-repeat: no-repeat;
@@ -888,7 +888,7 @@ body.mobile .overlay {
 }
 
 .uploaded-modal .gutter .modal h1 {
-    background-color: #1FBF63;
+    background-color: #1fb630;
 }
 
 .uploaded-modal .gutter .modal .description {
@@ -1015,7 +1015,7 @@ body.mobile .overlay {
 }
 
 .join-modal .gutter .modal form .buttons .y {
-    background-color: #3ccaa4;
+    background-color: #1fb630;
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -1033,7 +1033,7 @@ body.mobile .overlay {
 }
 
 .join-modal .gutter .modal form .buttons .y:hover {
-    background-color: #3ae0b4;
+    background-color: #0be066;
 }
 
 .join-modal .gutter .modal form .step {
@@ -1978,7 +1978,7 @@ body.mobile .overlay {
 }
 
 .easel .text a {
-    color: #1FBF63;
+    color: #1fb630;
     display: block;
     font-weight: bold;
     line-height: 1.6;
