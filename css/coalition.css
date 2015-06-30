@@ -466,6 +466,7 @@ body > section.artists .view-more {
     border: medium none;
     color: #FFF;
     cursor: pointer;
+    display: none;
     font-family: "Open Sans Web",sans-serif;
     font-size: 18px;
     font-weight: 600;
