@@ -57,6 +57,7 @@ var state = {
     facebook: '',
     imageBase64: null,
     imageFile: null,
+    instagram: '',
     isMobile: /mobile/i.test(navigator.userAgent),
     isPreviewingForMobile: false,
     name: '',
@@ -65,6 +66,7 @@ var state = {
     pageSize: 18,
     showingModals: {},
     socialLinkCount: 0,
+    soundcloud: '',
     step: 1,
     tumblr: '',
     twitter: '',
@@ -610,6 +612,9 @@ function setupJoinModal() {
 
             var option = document.querySelector('#social-links-modal .options [data-id="' + id + '"]');
             option.classList.remove('disabled');
+
+            var html = generateSocialLinksHTML(state);
+            socialLinksPreview.innerHTML = html;
         }, false);
 
         socialLinksButton.setAttribute('data-phase', state.socialLinkCount + 1);
