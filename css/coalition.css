@@ -505,6 +505,7 @@ body > section.join-us > h4 {
     font-weight: 300;
     margin: 0 auto 40px;
     max-width: 890px;
+    text-align: center;
 }
 body > section.join-us > h4 strong {
     border-bottom: 1px solid #1fb630;
