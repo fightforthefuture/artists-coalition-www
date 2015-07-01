@@ -556,6 +556,7 @@ body > section.join-us > .statement {
 }
 body > section.core-values {
     padding: 75px 32px 32px;
+    text-align: center;
 }
 body > section.core-values .expander .arrow {
     padding: 0 8px 0 0;
@@ -600,7 +601,7 @@ body > section.core-values ul li a:hover {
 }
 body > section.core-values ul li ul {
     display: none;
-    padding: 16px 0 16px 32px;
+    padding: 16px 0;
 }
 body > section.core-values ul li ul li {
     color: #555;
@@ -657,6 +658,8 @@ body > footer .left .logo {
 body > footer .right {
     float: right;
     margin: 37px 0;
+    overflow: hidden;
+    width: 210px;
 }
 body > footer .right .donate {
     background-color: #505063;
@@ -695,6 +698,19 @@ body > footer .right .facebook img,
 body > footer .right .twitter img {
     cursor: pointer;
     display: block;
+}
+
+@media (max-width: 550px) {
+    body > footer .left,
+    body > footer .right {
+        float: none;
+        margin: 32px auto;
+        text-align: center;
+    }
+
+    body > footer .left img {
+        margin: 0;
+    }
 }
 
 /* Buttons */
