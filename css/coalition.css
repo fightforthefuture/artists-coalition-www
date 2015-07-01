@@ -59,7 +59,7 @@ body > header {
     background-position: 0 30%;
     background-size: cover;
     border-bottom: solid 10px #f1f1f2;
-    margin: 0 0 85px;
+    margin: 0 0 75px;
     overflow: hidden;
     padding: 0 32px;
     text-align: center;
@@ -264,12 +264,12 @@ body > section.artists header {
 }
 body > section.artists header h3 {
     color: #1a223d;
-    float: left;
     font-family: 'Open Sans Web', sans-serif;
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 38px;
-    margin: 0 24px 16px 0;
+    font-size: 80px;
+    font-weight: 300;
+    line-height: 1.3;
+    margin: 0 32px 48px;
+    text-align: center;
 }
 body > section.artists header button.add-your-name {
     float: left;
@@ -481,6 +481,13 @@ body > section.artists .view-more {
 body > section.artists .view-more:hover {
     background-color: #11b9ff;
 }
+
+@media screen and (max-width: 650px) {
+    body > section.artists header h3 {
+        font-size: 50px;
+    }
+}
+
 body > section.join-us {
     background-color: #222227;
     padding: 75px 16px;
