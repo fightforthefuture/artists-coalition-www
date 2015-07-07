@@ -67,6 +67,7 @@ var state = {
     showingModals: {},
     socialLinkCount: 0,
     soundcloud: '',
+    submittedEmail: false,
     step: 1,
     tumblr: '',
     twitter: '',
@@ -250,6 +251,8 @@ function setupHeroForm() {
 
         document.activeElement.blur();
         document.querySelector('header .email').classList.add('thanks');
+
+        state.submittedEmail = true;
     });
 }
 
@@ -651,7 +654,9 @@ function setupJoinModal() {
 function sendSubmission() {
     modalShow('uploading-modal');
 
-    var data = new FormData();
+    var data;
+
+    data = new FormData();
     data.append('bandcamp', state.bandcamp);
     data.append('biography', state.biography);
     data.append('category_id', state.discipline);
@@ -669,6 +674,21 @@ function sendSubmission() {
         modalHide('uploading-modal');
         modalShow('uploaded-modal');
     });
+
+    if (state.submittedEmail) {
+        return;
+    }
+
+    // Send to MotherShip as well
+    data = new FormData();
+    data.append('guard', '');
+    data.append('hp_enabled', true);
+    data.append('tag', 'artistscoalition');
+    data.append('org', 'fftf');
+    data.append('member[first_name]', state.name);
+    data.append('member[email]', state.email);
+
+    ajax.post('https://queue.fightforthefuture.org/action', data);
 
 }
 
