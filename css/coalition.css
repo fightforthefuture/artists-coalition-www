@@ -569,6 +569,7 @@ body > section.join-us > .statement {
     text-align: center;
 }
 body > section.core-values {
+    background-color: #626274;
     padding: 75px 32px 32px;
     text-align: center;
 }
@@ -577,23 +578,36 @@ body > section.core-values .expander .arrow {
     height: 13px;
 }
 body > section.core-values h3 {
-    color: #222;
-    font-size: 80px;
+    color: #fff;
+    font-size: 84px;
     font-weight: 300;
-    margin: 0px 0px 48px;
+    margin: 0px 0px 36px;
     text-align: center;
 }
-body > section.core-values ul {
-    padding: 32px;
-    max-width: 1176px;
+body > section.core-values > .line {
+    background-color: #76768d;
+    height: 1px;
     margin: 0 auto;
+    max-width: 346px;
+}
+body > section.core-values ul {
+    padding: 44px 32px 32px;
+    max-width: 830px;
+    margin: 0 auto;
+    text-align: left;
+}
+body > section.core-values ul > .line {
+    background-color: #6c6c80;
+    height: 1px;
+    margin: 32px 0;
+    max-width: 740px;
 }
 body > section.core-values ul li {
-    color: #222;
-    font-size: 20px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.4;
     list-style: none;
-    line-height: 1.8;
-    padding: 0 0 16px;
 }
 body > section.core-values ul li,
 body > section.core-values ul li ul li {
@@ -614,27 +628,39 @@ body > section.core-values ul li a:hover {
     color: #42D37D;
 }
 body > section.core-values ul li ul {
+    background-color: #525262;
     display: none;
-    padding: 16px 0;
+    margin: 16px 0 0;
+    padding: 20px 20px 0;
+    overflow: hidden;
 }
 body > section.core-values ul li ul li {
-    color: #555;
-    font-size: 16px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 0 20px;
 }
-body > section.core-values ul li ul li ul li {
-    font-size: 12px;
+body > section.core-values ul li > .expander {
+    padding: 0 0 0 60px;
+    position: relative;
 }
 body > section.core-values ul li > .expander .arrow {
-    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-            transition: opacity 0.3s, transform 0.3s;
+    background-image: url(../images/belief-arrow-green.png);
+    height: 38px;
+    left: 0;
+    position: absolute;
+    width: 38px;
+
+    -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
 }
 body > section.core-values ul li > .expander:hover .arrow {
-    opacity: 0.7;
+    opacity: 0.9;
 }
 body > section.core-values ul li.enabled > .expander .arrow {
-    -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-            transform: rotate(90deg);
+    background-image: url(../images/belief-arrow-red.png);
+    height: 43px;
+    width: 38px;
 }
 body > section.core-values ul li.enabled > ul {
     display: block;
@@ -645,6 +671,13 @@ body > section.core-values ul li.enabled > ul {
 @media (max-width: 579px) {
     body > section.core-values h3 {
         font-size: 60px;
+    }
+    body > section.core-values ul li {
+        font-size: 20px;
+    }
+
+    body > section.core-values ul li ul li {
+        font-size: 16px;
     }
 }
 body > section.contact {

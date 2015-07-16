@@ -202,9 +202,6 @@ function loadArtistsFromDB(params) {
             view.classList.remove('nothing');
         }
 
-        console.log(state.pageSize);
-        console.log(artistsData.length);
-
         var viewMore = document.querySelector('section.artists .view-more');
         if (artistsData.length === state.pageSize) {
             viewMore.style.display = 'block';
@@ -990,6 +987,11 @@ function setupCoreValues() {
         e.preventDefault();
 
         var el = walkUpFromElementToSelector(e.target, 'section.core-values li');
+
+        if (!el) {
+            return;
+        }
+
         el.classList.toggle('enabled');
     }, false);
 }
