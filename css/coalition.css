@@ -649,6 +649,7 @@ body > section.core-values ul li > .expander .arrow {
     height: 38px;
     left: 0;
     position: absolute;
+    top: -1px;
     width: 38px;
 
     -webkit-transition: opacity 0.3s;
