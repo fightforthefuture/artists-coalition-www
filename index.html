@@ -245,15 +245,11 @@
     </div>
 
     <div class="right">
-        <a href="https://donate.fightforthefuture.org/" target="_blank" class="donate">Donate</a>
+        <a href="https://donate.fightforthefuture.org/?tag=defendculture" target="_blank" class="donate">Donate</a>
 
-        <div class="facebook">
-            <img src="images/facebook.png">
-        </div>
+        <button class="facebook"><img src="images/facebook.png"></button>
 
-        <div class="twitter">
-            <img src="images/twitter.png">
-        </div>
+        <button class="twitter"><img src="images/twitter.png"></button>
     </div>
 </footer>
 
@@ -441,6 +437,21 @@
     </div>
 </div>
 
+<div class="overlay social-modal invisible" id="social-modal">
+    <div class="gutter">
+        <div class="modal">
+            <a class="close" href="#">×</a>
+            <h1>You're awesome!</h1>
+            <p>Please share this page to spread the word.</p>
+            <button class="facebook"><img src="images/facebook.png"></button>
+
+            <button class="twitter"><img src="images/twitter.png"></button>
+            <br/>
+            <small><a href="https://donate.fightforthefuture.org?tag=defendculture">...or donate to keep us going!</a></small>
+        </div>
+    </div>
+</div>
+
 <script type="template" id="template:artist">
 <div class="artist" style="background-image: url(<%= photo_url || 'images/the-creation-of-adam.jpg' %>)">
 <div class="text">
@@ -474,6 +485,7 @@
 <script src="js/vendor/lodash.min.js"></script>
 <script src="js/vendor/packery.min.js"></script>
 <script src="js/coalition.js" async></script>
+<script type="text/javascript" src="https://freeprogress.herokuapp.com/js/client.js"></script>
 
 </body>
 </html>

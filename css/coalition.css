@@ -707,7 +707,7 @@ body > footer .right {
     float: right;
     margin: 37px 0;
     overflow: hidden;
-    width: 210px;
+    width: 240px;
 }
 body > footer .right .donate {
     background-color: #505063;
@@ -783,6 +783,13 @@ button.add-your-name {
 }
 button.add-your-name:hover {
     background-color: #0be066;
+}
+button.facebook, button.twitter {
+    border: 0px;
+    background: transparent;
+    padding: 0px;
+    font-size: 0px;
+    cursor: pointer;
 }
 
 /* Modals */
@@ -900,6 +907,16 @@ body.mobile .overlay {
 }
 .overlay .modal hr {
     border: 0px;
+}
+
+.social-modal .gutter .modal {
+    background-color: #fff;
+    max-width: 320px;
+}
+.social-modal .gutter .modal small {
+    display: block;
+    padding-bottom: 15px;
+    font-size: 16px;
 }
 
 .categories-modal .gutter .modal {

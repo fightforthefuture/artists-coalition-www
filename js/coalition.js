@@ -249,6 +249,8 @@ function setupHeroForm() {
         document.activeElement.blur();
         document.querySelector('header .email').classList.add('thanks');
 
+        modalShow('social-modal');
+
         state.submittedEmail = true;
     });
 }
